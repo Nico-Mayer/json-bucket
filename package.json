@@ -2,6 +2,7 @@
 	"name": "lean-kit",
 	"version": "0.0.2",
 	"private": true,
+	"prepare": "svelte-kit sync",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
@@ -25,6 +26,8 @@
 	"dependencies": {
 		"@egoist/tailwindcss-icons": "^1.1.0",
 		"@iconify-json/tabler": "^1.1.79",
+		"@supabase/auth-helpers-sveltekit": "^0.10.1",
+		"@supabase/supabase-js": "^2.26.0",
 		"tailwindcss-animatecss": "^3.0.4"
 	}
 }
