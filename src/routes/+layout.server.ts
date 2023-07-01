@@ -1,4 +1,4 @@
-export const load = async ({ locals }) => {
+export const load = async ({ locals }: { locals: Locals }) => {
 	return {
 		session: await locals.getSession(),
 	}
