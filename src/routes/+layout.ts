@@ -10,7 +10,7 @@ export const load: Load = async ({ fetch, data, depends }) => {
 		supabaseUrl: PUBLIC_SUPABASE_URL,
 		supabaseKey: PUBLIC_SUPABASE_KEY,
 		event: { fetch },
-		serverSession: data?.session || null,
+		serverSession: data?.session,
 	})
 
 	const {
