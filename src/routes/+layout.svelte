@@ -7,7 +7,6 @@
 
 	let { supabase, session } = data
 	$: ({ supabase, session } = data)
-	$: console.log(session)
 
 	onMount(() => {
 		const {
@@ -22,6 +21,6 @@
 	})
 </script>
 
-<main class="w-screen h-screen">
+<main class="w-screen h-screen text-nord-0 bg-nord-6">
 	<slot />
 </main>

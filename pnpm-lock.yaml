@@ -8,6 +8,9 @@ dependencies:
   '@egoist/tailwindcss-icons':
     specifier: ^1.1.0
     version: 1.1.0(tailwindcss@3.3.2)
+  '@iconify-json/simple-icons':
+    specifier: ^1.1.58
+    version: 1.1.58
   '@iconify-json/tabler':
     specifier: ^1.1.79
     version: 1.1.79
@@ -263,6 +266,12 @@ packages:
     os: [win32]
     requiresBuild: true
     optional: true
+
+  /@iconify-json/simple-icons@1.1.58:
+    resolution: {integrity: sha512-W4Kj3eADpGNwOi5ICXF0CHKCeHMugNUnY3KDfz/Z8rgQzWDh3eRTIVqwmzwr0EkA3EkPAiV1XeNQbzhx98ZNJQ==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: false
 
   /@iconify-json/tabler@1.1.79:
     resolution: {integrity: sha512-O3RtNqP5ZaP8abkLR/JJuqPY2JjsuV1ttK3xttbcCE9Uz11Pu1WpmbGJ8jv75DoAGYoZ784VUgL8oiJcINLblw==}

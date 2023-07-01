@@ -25,6 +25,7 @@
 	"type": "module",
 	"dependencies": {
 		"@egoist/tailwindcss-icons": "^1.1.0",
+		"@iconify-json/simple-icons": "^1.1.58",
 		"@iconify-json/tabler": "^1.1.79",
 		"@supabase/auth-helpers-sveltekit": "^0.10.1",
 		"@supabase/supabase-js": "^2.26.0",

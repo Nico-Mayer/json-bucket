@@ -6,3 +6,19 @@ body {
 	padding: 0 !important;
 	margin: 0 !important;
 }
+
+.btn {
+	transition: 230ms ease;
+	transform: translate(2px, -2px);
+	box-shadow: -4px 4px 0px #2e3440;
+	@apply bg-nord-6 px-4 py-2 border-solid border-nord-0 border text-center flex justify-center items-center gap-2;
+}
+.btn:hover {
+	@apply bg-nord-5;
+	transform: translate(-1px, 1px);
+	box-shadow: -2px 2px 0px #2e3440;
+}
+.btn:active {
+	transform: translate(-2px, 2px);
+	box-shadow: 0px 0px 0px #2e3440;
+}
