@@ -1,4 +1,5 @@
 <script lang="ts">
+	import '../app.css'
 	import { invalidate } from '$app/navigation'
 	import { onMount } from 'svelte'
 
@@ -20,4 +21,7 @@
 	})
 </script>
 
-<slot />
+<main class="w-screen h-screen">
+	hallo
+	<slot />
+</main>
