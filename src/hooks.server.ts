@@ -16,11 +16,12 @@ export const handle: Handle = async ({ event, resolve }) => {
 		return session
 	}
 
-	const session = await event.locals.getSession()
-
-	if (!session && event.url.pathname !== '/auth/login') {
-		console.log('no session found, redirecting to /auth/login')
-		throw redirect(303, '/auth/login')
+	if (event.url.pathname.startsWith('/protected-routes')) {
+		const session = await event.locals.getSession()
+		if (!session) {
+			// the user is not signed in
+			throw redirect(303, '/')
+		}
 	}
 
 	return resolve(event, {
