@@ -45,13 +45,18 @@
 				on:click={() => handleGoBack()}
 				class="btn h-10 w-10"
 				title="Home">
-				<div class="i-carbon-home text-xl" />
+				<div class="i-carbon-home text-lg" />
 			</button>
 		{/if}
 	</section>
 
 	<section class="w-1/3justify-center flex">
-		<h1 class="heading text-base md:text-lg">JSON Bucket</h1>
+		<a
+			href="/protected-routes/home"
+			class="heading text-base md:text-lg flex justify-center items-center gap-2">
+			<div class="i-carbon-ibm-cloud-direct-link-2-connect" />
+			JSON Bucket
+		</a>
 	</section>
 
 	<section class="w-1/3 flex justify-end">
