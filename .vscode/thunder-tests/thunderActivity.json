@@ -1,0 +1,58 @@
+[
+    {
+        "_id": "6d28e375-f6d9-4508-bafb-f697175543fc",
+        "colId": "history",
+        "containerId": "",
+        "name": "http://localhost:5173/protected-api/new-bucket",
+        "url": "http://localhost:5173/protected-api/new-bucket",
+        "method": "POST",
+        "sortNum": 0,
+        "created": "2023-07-02T08:10:48.317Z",
+        "modified": "2023-07-02T08:10:48.317Z",
+        "headers": [],
+        "params": [],
+        "tests": []
+    },
+    {
+        "_id": "a7b20e25-5958-4946-87e3-70b0653b293e",
+        "colId": "history",
+        "containerId": "",
+        "name": "http://localhost:5173/protected-api/new-bucket",
+        "url": "http://localhost:5173/protected-api/new-bucket",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-02T08:13:54.336Z",
+        "modified": "2023-07-02T08:13:54.336Z",
+        "headers": [],
+        "params": [],
+        "tests": []
+    },
+    {
+        "_id": "ccf62d09-b323-49c9-ad44-d0416b82cc31",
+        "colId": "history",
+        "containerId": "",
+        "name": "http://[::1]:5173/protected-api/new-bucket",
+        "url": "http://[::1]:5173/protected-api/new-bucket",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-02T08:16:19.465Z",
+        "modified": "2023-07-02T08:16:19.465Z",
+        "headers": [],
+        "params": [],
+        "tests": []
+    },
+    {
+        "_id": "bbdd5a1e-a3cd-42c1-9587-6bc7669090a5",
+        "colId": "history",
+        "containerId": "",
+        "name": "http://[::1]:5173/protected-api/new-bucket",
+        "url": "http://[::1]:5173/protected-api/new-bucket",
+        "method": "POST",
+        "sortNum": 0,
+        "created": "2023-07-02T08:23:26.526Z",
+        "modified": "2023-07-02T08:23:26.526Z",
+        "headers": [],
+        "params": [],
+        "tests": []
+    }
+]

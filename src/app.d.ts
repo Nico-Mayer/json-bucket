@@ -16,6 +16,24 @@ declare global {
 		name: string
 		description: string
 	}
+
+	namespace App {
+		interface Locals {
+			supabase: SupabaseClient<Database>
+			getSession(): Promise<Session | null>
+		}
+		interface PageData {
+			session: Session | null
+		}
+		type Bucket = {
+			id: string
+			created_at: Date
+			owner: string
+			name: string
+			description: string
+		}
+	}
+
 	// interface Error {}
 	// interface Platform {}
 }
