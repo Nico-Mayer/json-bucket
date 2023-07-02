@@ -15,6 +15,7 @@ declare global {
 		owner: string
 		name: string
 		description: string
+		json_data: JSON
 	}
 
 	namespace App {
@@ -31,6 +32,7 @@ declare global {
 			owner: string
 			name: string
 			description: string
+			json_data: JSON
 		}
 	}
 

@@ -3,19 +3,7 @@
 
 	export let data
 
-	$: ({ session, buckets } = data)
-	$: avatarURL = session?.user.user_metadata.avatar_url
-
-	const handleCreateBucket = async () => {
-		await fetch('/protected-api/new-bucket', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-		})
-
-		await invalidateAll()
-	}
+	$: ({ buckets } = data)
 
 	const handleDeleteBucket = async (bucketID: string) => {
 		await fetch(`/protected-api/delete-bucket/`, {
@@ -45,21 +33,11 @@
 </script>
 
 <main>
-	{session?.user.email}
-
-	<img class="w-10 rounded-full" src={avatarURL} alt="avatar" />
-
 	{#each buckets as bucket}
-		<div class="flex gap-4">
-			<input
-				bind:value={bucket.name}
-				on:blur={() => handleUpdateBucket(bucket)} />
-			<span>{bucket.id}</span>
-			<button on:click={() => handleDeleteBucket(bucket.id)}>
-				delete bucket
-			</button>
-		</div>
+		<a
+			href={`/protected-routes/bucket/${bucket.id}`}
+			class="flex gap-4 py-2 px-4 border border-t-0 hover:bg-nord-5">
+			<span class="font-semibold">{bucket.name}</span>
+		</a>
 	{/each}
-
-	<button on:click={handleCreateBucket}> create bucket </button>
 </main>
