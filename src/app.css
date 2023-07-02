@@ -8,17 +8,21 @@ body {
 }
 
 .btn {
-	transition: 230ms ease;
-	transform: translate(2px, -2px);
-	box-shadow: -4px 4px 0px #2e3440;
-	@apply bg-nord-6 px-4 py-2 border-solid border-nord-0 border text-center flex justify-center items-center gap-2;
+	@apply flex items-center justify-center gap-2;
+	@apply text-sm;
+	@apply font-semibold py-2 px-4 border border-gray-400 rounded;
 }
+
 .btn:hover {
-	@apply bg-nord-5;
-	transform: translate(-1px, 1px);
-	box-shadow: -2px 2px 0px #2e3440;
+	@apply bg-gray-100;
 }
-.btn:active {
-	transform: translate(-2px, 2px);
-	box-shadow: 0px 0px 0px #2e3440;
+
+.input {
+	@apply border border-gray-400 rounded;
+	@apply py-2 px-4;
+	@apply text-sm;
+}
+.input:focus {
+	@apply outline-none;
+	@apply border-gray-600;
 }

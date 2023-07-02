@@ -31,21 +31,19 @@
 </script>
 
 <nav
-	class="w-full px-2 sm:px-4 py-2 flex justify-between border-b items-center">
+	class="w-full px-2 sm:px-4 py-2 flex justify-between border-b items-center shadow-sm bg-white">
 	{#if onHome}
 		<button
 			on:click={() => handleCreateBucket()}
-			class="shadow px-4 py-2 flex items-center hover:bg-nord-5 text-center text-sm gap-2 border"
+			class="btn"
 			title="New bucket">
-			<div class="i-tabler-plus" />
+			<div class="i-tabler-plus flex" />
 			<span class="font-semibold">New bucket</span>
 		</button>
 	{:else if onBucket}
-		<button
-			on:click={() => handleGoBack()}
-			class="shadow px-4 py-2 flex items-center hover:bg-nord-5 text-center text-sm gap-2 border"
-			title="New bucket">
-			<div class="i-tabler-arrow-back" />
+		<button on:click={() => handleGoBack()} class="btn" title="New bucket">
+			<div class="i-tabler-home" />
+			<span class="font-semibold">Home</span>
 		</button>
 	{/if}
 
