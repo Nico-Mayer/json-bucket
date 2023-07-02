@@ -8,7 +8,7 @@ export const load = async ({ locals }: { locals: Locals }) => {
 			.from('buckets')
 			.select('*')
 			.eq('owner', owner)
-			.order('created_at', { ascending: true })
+			.order('last_changed', { ascending: false })
 
 		if (err) {
 			console.error(err)

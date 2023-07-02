@@ -10,7 +10,7 @@ html {
 
 /* Apply the border color to all elements */
 * {
-	border-color: var(--border-color) !important;
+	border-color: var(--border-color);
 }
 
 body {
@@ -39,14 +39,21 @@ body {
 	@apply outline-none;
 	@apply border-gray-600;
 }
-.cm-scroller {
-	width: calc(100vw - 30.16px);
-	height: 100%;
+
+.cm-editor {
+	font-size: 15px;
+	width: 100%;
+	height: calc(100vh - 104px);
 }
+
 .cm-gutters {
+	border-color: var(--border-color) !important;
 	background-color: transparent !important;
 }
 .cm-gutterElement {
+	background-color: transparent !important;
+}
+.cm-foldGutter {
 	background-color: transparent !important;
 }
 

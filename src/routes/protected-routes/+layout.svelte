@@ -6,5 +6,4 @@
 </script>
 
 <Navbar user_metadata={session?.user.user_metadata} />
-
 <slot />

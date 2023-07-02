@@ -1,6 +1,6 @@
 {
-	"name": "lean-kit",
-	"version": "0.0.2",
+	"name": "json-bucket",
+	"version": "1.0.0",
 	"private": true,
 	"prepare": "svelte-kit sync",
 	"scripts": {

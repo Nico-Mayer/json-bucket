@@ -11,7 +11,7 @@ export async function PUT({ locals, request }) {
 
 	const { data, error } = await supabase
 		.from('buckets')
-		.update({ ...newBucket })
+		.update({ ...newBucket, last_changed: new Date() })
 		.match({ id: newBucket.id, owner: owner })
 
 	if (error) {

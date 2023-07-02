@@ -25,7 +25,7 @@
 	}
 </script>
 
-<main class="w-screen h-screen flex flex-col items-center justify-center gap-5">
+<!-- <main class="w-screen h-screen flex flex-col items-center justify-center gap-5">
 	<div class="i-tabler-bucket text-7xl" />
 
 	<h1 class="px-2 font-bold text-lg md:text-xl">JSON Bucket</h1>
@@ -34,4 +34,79 @@
 		<div class="i-simple-icons-github" />
 		Sign in with Github
 	</button>
-</main>
+</main> -->
+
+<!--
+  Heads up! 👋
+
+  Plugins:
+    - @tailwindcss/forms
+-->
+
+<section class="bg-white">
+	<div class="lg:grid lg:min-h-screen lg:grid-cols-12">
+		<aside
+			class="relative block h-52 lg:order-last lg:col-span-5 lg:h-full xl:col-span-6">
+			<svg
+				class="absolute inset-0 h-full w-full object-cover"
+				id="patternId"
+				width="100%"
+				height="100%"
+				xmlns="http://www.w3.org/2000/svg"
+				><defs
+					><pattern
+						id="a"
+						patternUnits="userSpaceOnUse"
+						width="40"
+						height="59.428"
+						patternTransform="scale(3) rotate(105)"
+						><rect
+							x="0"
+							y="0"
+							width="100%"
+							height="100%"
+							fill="hsla(42, 0%, 100%, 1)" /><path
+							d="M0 70.975V47.881m20-1.692L8.535 52.808v13.239L20 72.667l11.465-6.62V52.808zm0-32.95l11.465-6.62V-6.619L20-13.24 8.535-6.619V6.619L20 13.24m8.535 4.927v13.238L40 38.024l11.465-6.62V18.166L40 11.546zM20 36.333L0 47.88m0 0v23.094m0 0l20 11.548 20-11.548V47.88m0 0L20 36.333m0 0l20 11.549M0 11.547l-11.465 6.619v13.239L0 38.025l11.465-6.62v-13.24L0 11.548v-23.094l20-11.547 20 11.547v23.094M20 36.333V13.24"
+							stroke-linejoin="round"
+							stroke-linecap="round"
+							stroke-width="6"
+							stroke="hsla(220, 16%, 22%, 1)"
+							fill="none" /></pattern
+					></defs
+				><rect
+					width="800%"
+					height="800%"
+					transform="translate(0,0)"
+					fill="url(#a)" /></svg>
+			<!-- <img
+				alt="Pattern"
+				src="https://images.unsplash.com/photo-1605106702734-205df224ecce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+				class="absolute inset-0 h-full w-full object-cover" /> -->
+		</aside>
+
+		<main
+			class="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:px-16 lg:py-12 xl:col-span-6">
+			<div class="max-w-xl lg:max-w-3xl">
+				<a class="block" href="/">
+					<span class="sr-only">Home</span>
+					<div
+						class="i-carbon-ibm-cloud-direct-link-2-connect text-6xl" />
+				</a>
+
+				<h1 class="mt-6 text-2xl font-bold sm:text-3xl md:text-4xl">
+					JSON Bucket
+				</h1>
+
+				<p class="mt-4 leading-relaxed text-gray-500">
+					Effortlessly store your JSON data and seamlessly access it
+					anywhere through generated API routes.
+				</p>
+
+				<button class="btn mt-4 text-xl" on:click={signInWithGithub}>
+					<div class="i-simple-icons-github" />
+					Sign in with Github
+				</button>
+			</div>
+		</main>
+	</div>
+</section>

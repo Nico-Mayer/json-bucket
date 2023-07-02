@@ -53,20 +53,24 @@
 		<input class="input" type="text" bind:value={currentBucket.name} />
 
 		<section class="flex gap-3">
-			<button on:click={() => copyApiURL()} class="btn">
-				<div class="i-carbon-copy" />
-				<span>RAW</span>
+			<button
+				title="Copy API URL"
+				on:click={() => copyApiURL()}
+				class="btn">
+				<div class="i-carbon-copy text-base" />
+				<span>API</span>
 			</button>
-			<button class="btn" on:click={() => handleUpdateBucket()}>
-				<div class="i-carbon-save" />
+			<button
+				title="Save changes"
+				class="btn"
+				on:click={() => handleUpdateBucket()}>
+				<div class="i-carbon-save text-base" />
 				<span>Save</span>
 			</button>
 		</section>
 	</main>
 
 	{#if _mounted}
-		<div class="w-screen flex overflow-y-scroll h-[calc(100vh-112px)]">
-			<CodeMirror bind:value={currentBucket.json_data} lang={json()} />
-		</div>
+		<CodeMirror bind:value={currentBucket.json_data} lang={json()} />
 	{/if}
 {/if}
