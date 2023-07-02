@@ -21,6 +21,10 @@
 	})
 </script>
 
+<svelte:head>
+	<title>JSON Bucket</title>
+</svelte:head>
+
 <main class="w-screen h-screen text-nord-0 bg-nord-6">
 	<slot />
 </main>

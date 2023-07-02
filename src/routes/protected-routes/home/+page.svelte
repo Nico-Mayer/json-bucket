@@ -28,6 +28,20 @@
 
 		await invalidateAll()
 	}
+
+	const handleUpdateBucket = async (newBucket: Bucket) => {
+		await fetch(`/protected-api/update-bucket/`, {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				newBucket,
+			}),
+		})
+
+		await invalidateAll()
+	}
 </script>
 
 <main>
@@ -37,7 +51,9 @@
 
 	{#each buckets as bucket}
 		<div class="flex gap-4">
-			<span>{bucket.name}</span>
+			<input
+				bind:value={bucket.name}
+				on:blur={() => handleUpdateBucket(bucket)} />
 			<span>{bucket.id}</span>
 			<button on:click={() => handleDeleteBucket(bucket.id)}>
 				delete bucket
