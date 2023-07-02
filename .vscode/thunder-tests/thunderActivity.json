@@ -54,5 +54,25 @@
         "headers": [],
         "params": [],
         "tests": []
+    },
+    {
+        "_id": "2c4aedb0-ed9d-439c-9492-920cb5cef9c6",
+        "colId": "history",
+        "containerId": "",
+        "name": "http://[::1]/public-api/bucket?bucketID=3fcbf8b7-8db5-4ef9-84ab-d9fe56bed4f8",
+        "url": "http://[::1]/public-api/bucket?bucketID=3fcbf8b7-8db5-4ef9-84ab-d9fe56bed4f8",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-02T14:02:13.662Z",
+        "modified": "2023-07-02T14:02:13.662Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "bucketID",
+                "value": "3fcbf8b7-8db5-4ef9-84ab-d9fe56bed4f8",
+                "isPath": false
+            }
+        ],
+        "tests": []
     }
 ]

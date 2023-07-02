@@ -26,3 +26,7 @@ body {
 	@apply outline-none;
 	@apply border-gray-600;
 }
+.cm-scroller {
+	width: calc(100vw - 30.16px);
+	height: 100%;
+}

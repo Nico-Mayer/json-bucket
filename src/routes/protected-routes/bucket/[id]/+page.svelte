@@ -18,6 +18,14 @@
 	$: currentBucket = buckets.find((bucket) => bucket.id === bucketID)
 
 	const handleUpdateBucket = async () => {
+		if (!currentBucket) return
+		try {
+			JSON.parse(currentBucket.json_data)
+		} catch (e) {
+			alert('Invalid JSON')
+			return
+		}
+
 		await fetch(`/protected-api/update-bucket/`, {
 			method: 'PUT',
 			headers: {
@@ -30,6 +38,14 @@
 
 		await invalidateAll()
 	}
+
+	const copyApiURL = () => {
+		if (!currentBucket) return
+
+		navigator.clipboard.writeText(
+			`http://localhost:5173/public-api/bucket?bucketID=${currentBucket.id}`
+		)
+	}
 </script>
 
 {#if currentBucket}
@@ -37,7 +53,8 @@
 		<input class="input" type="text" bind:value={currentBucket.name} />
 
 		<section class="flex gap-3">
-			<button class="btn hover:bg-gray-200">RAW</button>
+			<button on:click={() => copyApiURL()} class="btn hover:bg-gray-200"
+				>RAW</button>
 			<button
 				class="btn hover:bg-gray-200"
 				on:click={() => handleUpdateBucket()}>
@@ -47,7 +64,7 @@
 	</main>
 
 	{#if _mounted}
-		<div class="w-full flex overflow-y-scroll h-[calc(100vh-130px)]">
+		<div class="w-screen flex overflow-y-scroll h-[calc(100vh-112px)]">
 			<CodeMirror bind:value={currentBucket.json_data} lang={json()} />
 		</div>
 	{/if}
