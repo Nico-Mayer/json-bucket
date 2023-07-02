@@ -31,35 +31,44 @@
 </script>
 
 <nav
-	class="w-full px-2 sm:px-4 py-2 flex justify-between border-b items-center shadow-sm bg-white">
-	{#if onHome}
+	class="w-full px-2 sm:px-4 py-2 flex justify-between border-b items-center">
+	<section class="w-1/3">
+		{#if onHome}
+			<button
+				on:click={() => handleCreateBucket()}
+				class="btn h-10 w-10"
+				title="New bucket">
+				<div class="i-carbon-add text-xl" />
+			</button>
+		{:else if onBucket}
+			<button
+				on:click={() => handleGoBack()}
+				class="btn h-10 w-10"
+				title="Home">
+				<div class="i-carbon-home text-xl" />
+			</button>
+		{/if}
+	</section>
+
+	<section class="w-1/3justify-center flex">
+		<h1 class="heading text-base md:text-lg">JSON Bucket</h1>
+	</section>
+
+	<section class="w-1/3 flex justify-end">
 		<button
-			on:click={() => handleCreateBucket()}
-			class="btn"
-			title="New bucket">
-			<div class="i-tabler-plus flex" />
-			<span class="font-semibold">New bucket</span>
+			on:click={() => (showDropdown = !showDropdown)}
+			class="group flex shrink-0 items-center relative">
+			<span class="sr-only">Menu</span>
+			<img
+				alt="avatar"
+				src={avatar_url}
+				class="h-8 w-8 rounded-full object-cover" />
+
+			<p class="ms-2 hidden text-left text-xs sm:block">
+				<strong class="block font-medium">{name}</strong>
+
+				<span class="text-gray-500">{email}</span>
+			</p>
 		</button>
-	{:else if onBucket}
-		<button on:click={() => handleGoBack()} class="btn" title="New bucket">
-			<div class="i-tabler-home" />
-			<span class="font-semibold">Home</span>
-		</button>
-	{/if}
-
-	<button
-		on:click={() => (showDropdown = !showDropdown)}
-		class="group flex shrink-0 items-center relative">
-		<span class="sr-only">Menu</span>
-		<img
-			alt="avatar"
-			src={avatar_url}
-			class="h-10 w-10 rounded-full object-cover" />
-
-		<p class="ms-2 hidden text-left text-xs sm:block">
-			<strong class="block font-medium">{name}</strong>
-
-			<span class="text-gray-500">{email}</span>
-		</p>
-	</button>
+	</section>
 </nav>

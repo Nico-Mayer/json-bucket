@@ -1,6 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;300;400&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+	--border-color: #e5e7eb; /* gray-200 */
+}
+
+/* Apply the border color to all elements */
+* {
+	border-color: var(--border-color) !important;
+}
 
 body {
 	padding: 0 !important;
@@ -10,17 +21,19 @@ body {
 .btn {
 	@apply flex items-center justify-center gap-2;
 	@apply text-sm;
-	@apply font-semibold py-2 px-4 border border-gray-400 rounded;
+	@apply py-1 px-2 border rounded;
+	@apply transition-all duration-200;
 }
 
 .btn:hover {
-	@apply bg-gray-100;
+	@apply text-gray-700 border-gray-500;
 }
 
 .input {
-	@apply border border-gray-400 rounded;
-	@apply py-2 px-4;
+	@apply border rounded;
+	@apply py-1 px-2;
 	@apply text-sm;
+	background-color: transparent;
 }
 .input:focus {
 	@apply outline-none;
@@ -29,4 +42,14 @@ body {
 .cm-scroller {
 	width: calc(100vw - 30.16px);
 	height: 100%;
+}
+.cm-gutters {
+	background-color: transparent !important;
+}
+.cm-gutterElement {
+	background-color: transparent !important;
+}
+
+.heading {
+	font-family: 'Noto Sans', sans-serif;
 }

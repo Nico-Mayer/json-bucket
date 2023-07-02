@@ -36,8 +36,8 @@
 	{#each buckets as bucket}
 		<a
 			href={`/protected-routes/bucket/${bucket.id}`}
-			class="flex gap-4 py-2 px-4 border border-t-0 hover:bg-gray-200">
-			<span class="font-semibold">{bucket.name}</span>
+			class="flex gap-4 py-2 px-4 border border-t-0 hover:bg-gray-100">
+			<span class="">{bucket.name}</span>
 		</a>
 	{/each}
 </main>

@@ -33,7 +33,11 @@ module.exports = {
 	},
 	plugins: [
 		iconsPlugin({
-			collections: getIconCollections(['tabler', 'simple-icons']),
+			collections: getIconCollections([
+				'tabler',
+				'simple-icons',
+				'carbon',
+			]),
 		}),
 		require('tailwindcss-animatecss'),
 	],

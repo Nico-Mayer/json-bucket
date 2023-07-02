@@ -49,16 +49,17 @@
 </script>
 
 {#if currentBucket}
-	<main class="py-2 px-4 flex justify-between border-b shadow-sm">
+	<main class="py-2 px-4 flex justify-between border-b">
 		<input class="input" type="text" bind:value={currentBucket.name} />
 
 		<section class="flex gap-3">
-			<button on:click={() => copyApiURL()} class="btn hover:bg-gray-200"
-				>RAW</button>
-			<button
-				class="btn hover:bg-gray-200"
-				on:click={() => handleUpdateBucket()}>
-				Save
+			<button on:click={() => copyApiURL()} class="btn">
+				<div class="i-carbon-copy" />
+				<span>RAW</span>
+			</button>
+			<button class="btn" on:click={() => handleUpdateBucket()}>
+				<div class="i-carbon-save" />
+				<span>Save</span>
 			</button>
 		</section>
 	</main>

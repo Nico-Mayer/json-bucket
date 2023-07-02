@@ -25,6 +25,6 @@
 	<title>JSON Bucket</title>
 </svelte:head>
 
-<main class="w-screen h-screen text-gray-800 bg-gray-100">
+<main class="w-screen h-screen text-gray-600">
 	<slot />
 </main>

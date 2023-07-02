@@ -20,6 +20,9 @@ dependencies:
   '@egoist/tailwindcss-icons':
     specifier: ^1.1.0
     version: 1.1.0(tailwindcss@3.3.2)
+  '@iconify-json/carbon':
+    specifier: ^1.1.18
+    version: 1.1.18
   '@iconify-json/simple-icons':
     specifier: ^1.1.58
     version: 1.1.58
@@ -353,6 +356,12 @@ packages:
     os: [win32]
     requiresBuild: true
     optional: true
+
+  /@iconify-json/carbon@1.1.18:
+    resolution: {integrity: sha512-RbKET6KS9xUMeYVq1FUH3UUA7AYNcnApkHt2AccCwTWTQQs/O58ji4Of6z6PhRajGlbfvrJzT/Uqh19OKECRvA==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: false
 
   /@iconify-json/simple-icons@1.1.58:
     resolution: {integrity: sha512-W4Kj3eADpGNwOi5ICXF0CHKCeHMugNUnY3KDfz/Z8rgQzWDh3eRTIVqwmzwr0EkA3EkPAiV1XeNQbzhx98ZNJQ==}
