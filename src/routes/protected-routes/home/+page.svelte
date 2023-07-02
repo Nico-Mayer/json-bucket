@@ -5,6 +5,18 @@
 
 	$: ({ buckets } = data)
 
+	function formatTimestamp(timestamp: Date) {
+		const date = new Date(timestamp)
+		const year = date.getFullYear()
+		const month = String(date.getMonth() + 1).padStart(2, '0')
+		const day = String(date.getDate()).padStart(2, '0')
+		const hours = String(date.getHours()).padStart(2, '0')
+		const minutes = String(date.getMinutes()).padStart(2, '0')
+
+		const formattedTimestamp = `${year}-${month}-${day} ${hours}:${minutes}`
+		return formattedTimestamp
+	}
+
 	const handleDeleteBucket = async (bucketID: string) => {
 		await fetch(`/protected-api/delete-bucket/`, {
 			method: 'DELETE',
@@ -37,8 +49,14 @@
 		{#each buckets as bucket}
 			<a
 				href={`/protected-routes/bucket/${bucket.id}`}
-				class="flex gap-4 py-2 px-4 border border-t-0 hover:bg-gray-100">
-				<span class="">{bucket.name}</span>
+				class="flex gap-4 py-2 px-4 border border-t-0 hover:bg-gray-100 items-center justify-between">
+				<div class="flex gap-5 items-center">
+					<span class="font-medium">{bucket.name}</span>
+					<span class="text-xs border px-2 rounded-full"
+						>{formatTimestamp(bucket.last_changed)}</span>
+				</div>
+
+				<div class="i-carbon-caret-right h-full" />
 			</a>
 		{/each}
 	</section>
@@ -54,7 +72,7 @@
 		</span>
 		<a
 			class="flex items-center justify-center"
-			href="https://github.com/Nico-Mayer"
+			href="https://github.com/Nico-Mayer/json-bucket"
 			target="_blank">
 			<div class="i-carbon-logo-github ml-4" />
 		</a>

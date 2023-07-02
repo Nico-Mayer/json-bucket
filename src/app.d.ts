@@ -12,6 +12,7 @@ declare global {
 	type Bucket = {
 		id: string
 		created_at: Date
+		last_changed: Date
 		owner: string
 		name: string
 		description: string

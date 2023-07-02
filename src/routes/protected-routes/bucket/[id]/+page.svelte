@@ -4,9 +4,11 @@
 	import CodeMirror from 'svelte-codemirror-editor'
 	import { json } from '@codemirror/lang-json'
 	import { onMount } from 'svelte'
+	import { slide, fade } from 'svelte/transition'
 
 	export let data
 
+	let canDelete = false
 	let _mounted = false
 	let bucketID = $page.params.id
 
@@ -16,6 +18,18 @@
 
 	$: ({ buckets } = data)
 	$: currentBucket = buckets.find((bucket) => bucket.id === bucketID)
+
+	const handleDeleteBucket = async () => {
+		if (!currentBucket) return
+		if (!canDelete) {
+			canDelete = true
+
+			setTimeout(() => {
+				canDelete = false
+			}, 3000)
+			return
+		}
+	}
 
 	const handleUpdateBucket = async () => {
 		if (!currentBucket) return
@@ -67,6 +81,18 @@
 				<div class="i-carbon-save text-base" />
 				<span>Save</span>
 			</button>
+
+			<button
+				title="Delete bucket"
+				class="btn"
+				class:canDelete
+				on:click={() => handleDeleteBucket()}>
+				<div class="i-carbon-trash-can text-base" />
+
+				{#if canDelete}
+					<span transition:fade>Delete</span>
+				{/if}
+			</button>
 		</section>
 	</main>
 
@@ -74,3 +100,15 @@
 		<CodeMirror bind:value={currentBucket.json_data} lang={json()} />
 	{/if}
 {/if}
+
+<style scoped>
+	.canDelete {
+		@apply bg-red-600 border-red-600;
+
+		color: white;
+	}
+	.canDelete:hover {
+		@apply bg-red-500 border-red-500;
+		color: white !important;
+	}
+</style>

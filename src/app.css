@@ -22,11 +22,12 @@ body {
 	@apply flex items-center justify-center gap-2;
 	@apply text-sm;
 	@apply py-1 px-2 border rounded;
+	@apply text-gray-500;
 	@apply transition-all duration-200;
 }
 
 .btn:hover {
-	@apply text-gray-500 border-gray-500;
+	@apply text-gray-900 border-gray-300;
 }
 
 .input {
