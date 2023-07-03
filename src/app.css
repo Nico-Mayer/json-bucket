@@ -49,6 +49,7 @@ body {
 }
 
 .cm-editor {
+	@apply !text-[#1e1e1e] dark:!text-[#d4cfbf];
 	font-size: 15px;
 	width: 100%;
 	height: calc(100vh - 104px);
@@ -59,11 +60,38 @@ body {
 	@apply !border-black/10 dark:!border-white/10;
 	background-color: transparent !important;
 }
+
 .cm-gutterElement {
 	background-color: transparent !important;
 }
 .cm-foldGutter {
 	background-color: transparent !important;
+}
+.cm-activeLine {
+	@apply !bg-secondaryLightHover dark:!bg-secondaryDarkHover;
+}
+.ͼc {
+	/* bool in codemirror */
+	@apply !text-[#1c6b48];
+}
+.ͼe {
+	/* string in codemirror */
+	@apply !text-[#b56959] dark:!text-[#d48372];
+}
+.ͼd {
+	/* number in codemirror */
+	@apply !text-[#296aa3] dark:!text-[#6394bf];
+}
+.ͼ4 {
+	color: red;
+}
+
+.cm-cursor {
+	@apply !border-[#393a34] dark:!border-[#d4cfbf];
+}
+
+.cm-selectionBackground {
+	@apply !bg-secondaryLightHover dark:!bg-secondaryDarkHover;
 }
 
 .heading {

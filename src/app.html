@@ -8,14 +8,17 @@
 			).matches
 				? 'dark'
 				: 'light'
+
 			function themeCheck() {
 				if (
 					userTheme === 'dark' ||
 					(userTheme === null && systemTheme === 'dark')
 				) {
+					localStorage.setItem('theme', 'dark')
 					document.documentElement.classList.add('dark')
 					return
 				}
+				localStorage.setItem('theme', 'light')
 				document.documentElement.classList.remove('dark')
 			}
 			themeCheck()

@@ -1,10 +1,16 @@
 <script lang="ts">
 	import { invalidateAll } from '$app/navigation'
 	import type { UserMetadata } from '@supabase/supabase-js'
+	import { onMount } from 'svelte'
 
 	export let data
 
 	let user_metadata: UserMetadata
+	let activeTheme: string | null
+
+	onMount(() => {
+		activeTheme = localStorage.getItem('theme')
+	})
 
 	$: ({ session, supabase } = data)
 	$: if (session) {
@@ -20,10 +26,12 @@
 		if (theme === 'dark') {
 			localStorage.setItem('theme', 'dark')
 			document.documentElement.classList.add('dark')
+			activeTheme = 'dark'
 			return
 		} else {
 			localStorage.setItem('theme', 'light')
 			document.documentElement.classList.remove('dark')
+			activeTheme = 'light'
 			return
 		}
 	}
@@ -54,11 +62,17 @@
 				<strong class="my-2">Appearance</strong>
 
 				<div class="my-2 flex gap-2">
-					<button class="btn" on:click={() => setTheme('light')}>
+					<button
+						class="btn"
+						on:click={() => setTheme('light')}
+						class:active={activeTheme === 'light'}>
 						<div class="i-carbon-sun" />
 						<span>Light</span>
 					</button>
-					<button class="btn" on:click={() => setTheme('dark')}>
+					<button
+						class="btn"
+						on:click={() => setTheme('dark')}
+						class:active={activeTheme === 'dark'}>
 						<div class="i-carbon-moon" />
 						<span>Dark</span>
 					</button>
@@ -85,12 +99,15 @@
 	</main>
 {/if}
 
-<style scoped>
+<style lang="postcss" scoped>
 	.delete-btn {
 		color: white !important;
 		@apply bg-red-400 border-red-400;
 	}
 	.delete-btn:hover {
 		@apply bg-red-500 border-red-500 text-white;
+	}
+	.active {
+		@apply bg-gray-200 dark:bg-slate-950;
 	}
 </style>
