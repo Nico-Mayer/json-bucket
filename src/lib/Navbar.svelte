@@ -2,8 +2,7 @@
 	import { goto, invalidateAll } from '$app/navigation'
 	import { page } from '$app/stores'
 
-	$: pathname = $page.url.pathname
-
+	$: pathname = $page?.url.pathname
 	$: onHome = pathname.startsWith('/protected-routes/home')
 	$: onBucket = pathname.startsWith('/protected-routes/bucket')
 

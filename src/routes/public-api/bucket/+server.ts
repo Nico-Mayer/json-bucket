@@ -14,8 +14,6 @@ export async function GET({ locals, url }) {
 		return new Response('Internal Server Error', { status: 500 })
 	}
 
-	console.log(JSON.parse(data.json_data))
-
 	const JSON_String = JSON.stringify(data.json_data)
 	const JSON_OBJ = JSON.parse(JSON_String)
 	return new Response(JSON_OBJ, { status: 200 })

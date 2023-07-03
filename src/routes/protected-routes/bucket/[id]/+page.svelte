@@ -4,15 +4,16 @@
 	import CodeMirror from 'svelte-codemirror-editor'
 	import { json } from '@codemirror/lang-json'
 	import { onMount } from 'svelte'
-	import { slide, fade } from 'svelte/transition'
+	import { fade } from 'svelte/transition'
 
 	export let data
 
 	let canDelete = false
 	let _mounted = false
-	let bucketID = $page.params.id
+	let bucketID: string
 
 	onMount(() => {
+		bucketID = $page.params.id
 		_mounted = true
 	})
 

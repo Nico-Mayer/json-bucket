@@ -48,6 +48,7 @@ body {
 	font-size: 15px;
 	width: 100%;
 	height: calc(100vh - 104px);
+	background-color: transparent !important;
 }
 
 .cm-gutters {
