@@ -9,6 +9,7 @@ declare global {
 	interface PageData {
 		session: Session | null
 	}
+
 	type Bucket = {
 		id: string
 		created_at: Date
@@ -27,6 +28,7 @@ declare global {
 		interface PageData {
 			session: Session | null
 		}
+
 		type Bucket = {
 			id: string
 			created_at: Date

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { invalidateAll } from '$app/navigation'
+	import { goto, invalidateAll } from '$app/navigation'
 	import { page } from '$app/stores'
 	import CodeMirror from 'svelte-codemirror-editor'
 	import { json } from '@codemirror/lang-json'
@@ -27,8 +27,20 @@
 
 			setTimeout(() => {
 				canDelete = false
-			}, 3000)
+			}, 5000)
 			return
+		}
+
+		if (canDelete) {
+			await fetch(`/protected-api/delete-bucket/`, {
+				method: 'DELETE',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({ bucketID }),
+			})
+			canDelete = false
+			goto('/protected-routes/home')
 		}
 	}
 

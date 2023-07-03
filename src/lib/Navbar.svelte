@@ -5,10 +5,10 @@
 	$: pathname = $page?.url.pathname
 	$: onHome = pathname.startsWith('/protected-routes/home')
 	$: onBucket = pathname.startsWith('/protected-routes/bucket')
+	$: onSettings = pathname.startsWith('/protected-routes/settings')
 
 	export let user_metadata
 
-	let showDropdown = false
 	let avatar_url = user_metadata?.avatar_url
 	let name = user_metadata?.name
 	let email = user_metadata?.email
@@ -27,6 +27,9 @@
 	const handleGoBack = () => {
 		goto('/protected-routes/home')
 	}
+	const handleGoToSettings = () => {
+		goto('/protected-routes/settings')
+	}
 </script>
 
 <nav
@@ -39,7 +42,7 @@
 				title="New bucket">
 				<div class="i-carbon-add text-xl" />
 			</button>
-		{:else if onBucket}
+		{:else if onBucket || onSettings}
 			<button
 				on:click={() => handleGoBack()}
 				class="btn h-10 w-10"
@@ -60,7 +63,7 @@
 
 	<section class="w-1/3 flex justify-end">
 		<button
-			on:click={() => (showDropdown = !showDropdown)}
+			on:click={() => handleGoToSettings()}
 			class="group flex shrink-0 items-center relative">
 			<span class="sr-only">Menu</span>
 			<img

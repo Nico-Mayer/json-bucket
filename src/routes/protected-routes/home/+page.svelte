@@ -22,18 +22,6 @@
 		return formattedTimestamp
 	}
 
-	const handleDeleteBucket = async (bucketID: string) => {
-		await fetch(`/protected-api/delete-bucket/`, {
-			method: 'DELETE',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({ bucketID }),
-		})
-
-		await invalidateAll()
-	}
-
 	const handleUpdateBucket = async (newBucket: Bucket) => {
 		await fetch(`/protected-api/update-bucket/`, {
 			method: 'PUT',
