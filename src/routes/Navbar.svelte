@@ -38,14 +38,14 @@
 		{#if onHome}
 			<button
 				on:click={() => handleCreateBucket()}
-				class="btn h-10 w-10"
+				class="btn h-10 w-10 !p-0"
 				title="New bucket">
 				<div class="i-carbon-add text-xl" />
 			</button>
 		{:else if onBucket || onSettings}
 			<button
 				on:click={() => handleGoBack()}
-				class="btn h-10 w-10"
+				class="btn h-10 w-10 !p-0"
 				title="Home">
 				<div class="i-carbon-home text-lg" />
 			</button>
@@ -74,7 +74,7 @@
 			<p class="ms-2 hidden text-left text-xs sm:block">
 				<strong class="block font-medium">{name}</strong>
 
-				<span class="text-gray-500">{email}</span>
+				<span class="opacity-60">{email}</span>
 			</p>
 		</button>
 	</section>

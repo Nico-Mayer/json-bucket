@@ -121,7 +121,7 @@
 			{#if !validJSON}
 				<div
 					transition:fade
-					class="px-2 text-xs border border-yellow-500 rounded-full text-yellow-500 hidden sm:block">
+					class="badge !border-yellow-500 !text-yellow-500 hidden sm:block">
 					Invalid JSON
 				</div>
 

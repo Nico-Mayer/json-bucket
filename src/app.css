@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 * {
-	@apply !border-gray-200 dark:!border-gray-700;
+	@apply border-black/10 dark:border-white/10;
 }
 
 body {
@@ -14,30 +14,37 @@ body {
 }
 
 .btn {
+	@apply dark:bg-secondaryDark bg-secondaryLight;
 	@apply flex items-center justify-center gap-2;
 	@apply text-sm;
-	@apply py-1 px-2 border rounded;
-	@apply text-gray-500 dark:text-gray-400;
+	@apply py-1 px-4 border rounded;
+	@apply text-black/60 dark:text-white/60;
 	@apply transition-all duration-200;
 }
 
 .btn:hover {
-	@apply text-gray-900 border-gray-300 dark:text-gray-100 dark:border-gray-600;
+	@apply text-black/80 dark:text-white/80;
+	@apply dark:bg-secondaryDarkHover bg-secondaryLightHover;
+	@apply border-black/30 dark:border-white/30;
 }
 
 .input {
 	@apply border rounded;
 	@apply py-1 px-2;
 	@apply text-sm;
-
-	background-color: transparent;
+	@apply bg-secondaryLight dark:bg-secondaryDark;
 }
 .input:focus {
 	@apply outline-none;
-	@apply border-gray-300;
+	@apply border-black/30 dark:border-white/30;
 }
 .input-with-icon {
 	@apply sm:pl-8 !important;
+}
+
+.badge {
+	@apply text-xs border px-2 sm:px-2.5  rounded-full font-mono;
+	@apply bg-secondaryLight dark:bg-secondaryDark;
 }
 
 .cm-editor {
@@ -48,6 +55,7 @@ body {
 }
 
 .cm-gutters {
+	@apply !border-black/10 dark:!border-white/10;
 	background-color: transparent !important;
 }
 .cm-gutterElement {

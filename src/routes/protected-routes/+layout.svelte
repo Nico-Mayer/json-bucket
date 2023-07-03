@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Navbar from '$lib/Navbar.svelte'
+	import Navbar from '../Navbar.svelte'
 	import { Toaster } from 'svelte-french-toast'
 
 	export let data

@@ -28,10 +28,10 @@
 		{#each buckets as bucket}
 			<a
 				href={`/protected-routes/bucket/${bucket.id}`}
-				class="flex gap-4 py-2 px-4 border-b hover:bg-gray-100 dark:hover:bg-gray-800 items-center justify-between">
+				class="flex gap-4 py-2 px-4 border-b hover:bg-secondaryLightHover dark:hover:bg-secondaryDarkHover items-center justify-between">
 				<div class="flex gap-5 items-center">
 					<span class="font-medium">{bucket.name}</span>
-					<span class="text-xs border px-2 rounded-full"
+					<span class="badge"
 						>{formatTimestamp(bucket.last_changed)}</span>
 				</div>
 
@@ -41,14 +41,12 @@
 	</section>
 
 	<footer
-		class="w-full self-end justify-end items-center flex py-1 px-4 border-t font-extralight">
-		<span class="text-xs align-middle">
-			built by
-			<a
-				class="text-gray-400"
-				target="_blank"
-				href="https://nima94.vercel.app">@Nico-Mayer</a>
-		</span>
+		class="w-full self-end justify-end items-center flex py-1 px-4 border-t font-light">
+		<span class="text-xs align-middle mr-1"> built by </span>
+		<a
+			class="opacity-70 hover:opacity-100 transition-opacity duration-300 font-normal text-xs"
+			target="_blank"
+			href="https://nima94.vercel.app">@Nico-Mayer</a>
 		<a
 			class="flex items-center justify-center"
 			href="https://github.com/Nico-Mayer/json-bucket"

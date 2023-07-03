@@ -40,7 +40,7 @@
 						{user_metadata.name}
 					</strong>
 
-					<span class="text-gray-500">{user_metadata.email}</span>
+					<span class="opacity-60">{user_metadata.email}</span>
 				</p>
 			</div>
 			<img

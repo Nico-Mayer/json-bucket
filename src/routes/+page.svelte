@@ -52,7 +52,7 @@
 							stroke-linejoin="round"
 							stroke-linecap="round"
 							stroke-width="6"
-							class="stroke-gray-700 dark:stroke-gray-200"
+							class="stroke-black/90 dark:stroke-white/90"
 							fill="none" /></pattern
 					></defs
 				><rect
@@ -75,7 +75,7 @@
 					JSON Bucket
 				</h1>
 
-				<p class="mt-4 leading-relaxed text-gray-500">
+				<p class="mt-4 leading-relaxed opacity-60">
 					Effortlessly store your JSON data and seamlessly access it
 					anywhere through generated API routes.
 				</p>
