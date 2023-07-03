@@ -18,17 +18,18 @@ body {
 	@apply flex items-center justify-center gap-2;
 	@apply text-sm;
 	@apply py-1 px-4 border rounded;
-	@apply text-black/60 dark:text-white/60;
+	@apply !text-black/60 dark:!text-white/60;
 	@apply transition-all duration-200;
 }
 
 .btn:hover {
-	@apply text-black/80 dark:text-white/80;
+	@apply !text-black/80 dark:!text-white/80;
 	@apply dark:bg-secondaryDarkHover bg-secondaryLightHover;
 	@apply border-black/30 dark:border-white/30;
 }
 
 .input {
+	@apply !text-black/80 dark:!text-white/80;
 	@apply border rounded;
 	@apply py-1 px-2;
 	@apply text-sm;
