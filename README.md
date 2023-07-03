@@ -53,6 +53,7 @@ Easily log in with your social accounts such as GitHub, Google, or Discord. Once
 
 -   [ ] Implement JSON Linting
 -   [ ] Implement automatic JSON formatting
+-   [ ] Implement private api key generation and endpoints
 
 See the [open issues](https://github.com/Nico-Mayer/json-bucket/issues) for a full list of proposed features (and known issues).
 
@@ -99,6 +100,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [license-url]: https://github.com/Nico-Mayer/json-bucket/blob/master/LICENSE.txt
 [product-screenshot]: frontend/src/assets/images/app.png
 [svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
+[supabase.com]: https://shields.io/badge/supabase-black?logo=supabase&style=for-the-badge
 [svelte-url]: https://svelte.dev/
 [supabase-url]: https://supabase.com/
 [wails.dev]: https://img.shields.io/badge/Go-4A4A55?style=for-the-badge&logo=go&logoColor=29BEB0
