@@ -1,9 +1,14 @@
 <script lang="ts">
 	import { invalidateAll } from '$app/navigation'
+	import { onMount } from 'svelte'
 
 	export let data
 
 	$: ({ buckets } = data)
+
+	onMount(() => {
+		invalidateAll()
+	})
 
 	function formatTimestamp(timestamp: Date) {
 		const date = new Date(timestamp)

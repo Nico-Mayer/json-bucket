@@ -38,7 +38,10 @@ body {
 }
 .input:focus {
 	@apply outline-none;
-	@apply border-gray-600;
+	@apply border-gray-300;
+}
+.input-with-icon {
+	@apply pl-8 !important;
 }
 
 .cm-editor {

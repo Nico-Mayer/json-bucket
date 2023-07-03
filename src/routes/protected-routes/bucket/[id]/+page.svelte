@@ -64,7 +64,13 @@
 
 {#if currentBucket}
 	<main class="py-2 px-4 flex justify-between border-b">
-		<input class="input" type="text" bind:value={currentBucket.name} />
+		<section class="flex justify-center items-center relative">
+			<div class="i-carbon-tag absolute left-2 pointer-events-none" />
+			<input
+				class="input input-with-icon"
+				type="text"
+				bind:value={currentBucket.name} />
+		</section>
 
 		<section class="flex gap-3">
 			<button
