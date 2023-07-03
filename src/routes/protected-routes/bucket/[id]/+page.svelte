@@ -122,8 +122,7 @@
 
 <style scoped>
 	.canDelete {
-		@apply bg-red-600 border-red-600;
-
+		@apply bg-red-400 border-red-400;
 		color: white;
 	}
 	.canDelete:hover {
