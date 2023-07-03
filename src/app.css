@@ -34,6 +34,7 @@ body {
 	@apply border rounded;
 	@apply py-1 px-2;
 	@apply text-sm;
+
 	background-color: transparent;
 }
 .input:focus {
@@ -41,7 +42,7 @@ body {
 	@apply border-gray-300;
 }
 .input-with-icon {
-	@apply pl-8 !important;
+	@apply sm:pl-8 !important;
 }
 
 .cm-editor {

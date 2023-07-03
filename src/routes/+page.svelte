@@ -25,24 +25,6 @@
 	}
 </script>
 
-<!-- <main class="w-screen h-screen flex flex-col items-center justify-center gap-5">
-	<div class="i-tabler-bucket text-7xl" />
-
-	<h1 class="px-2 font-bold text-lg md:text-xl">JSON Bucket</h1>
-
-	<button class="btn" on:click={signInWithGithub}>
-		<div class="i-simple-icons-github" />
-		Sign in with Github
-	</button>
-</main> -->
-
-<!--
-  Heads up! 👋
-
-  Plugins:
-    - @tailwindcss/forms
--->
-
 <section class="bg-white">
 	<div class="lg:grid lg:min-h-screen lg:grid-cols-12">
 		<aside
@@ -78,10 +60,6 @@
 					height="800%"
 					transform="translate(0,0)"
 					fill="url(#a)" /></svg>
-			<!-- <img
-				alt="Pattern"
-				src="https://images.unsplash.com/photo-1605106702734-205df224ecce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-				class="absolute inset-0 h-full w-full object-cover" /> -->
 		</aside>
 
 		<main

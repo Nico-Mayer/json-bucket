@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Navbar from '$lib/Navbar.svelte'
+	import { Toaster } from 'svelte-french-toast'
 
 	export let data
 	$: ({ session } = data)
@@ -7,3 +8,4 @@
 
 <Navbar user_metadata={session?.user.user_metadata} />
 <slot />
+<Toaster />

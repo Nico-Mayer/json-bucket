@@ -5,12 +5,14 @@
 	import { json } from '@codemirror/lang-json'
 	import { onMount } from 'svelte'
 	import { fade } from 'svelte/transition'
+	import { toast } from 'svelte-french-toast'
 
 	export let data
 
-	let canDelete = false
 	let _mounted = false
+	let canDelete = false
 	let bucketID: string
+	let validJSON: boolean = true
 
 	onMount(() => {
 		bucketID = $page.params.id
@@ -19,6 +21,15 @@
 
 	$: ({ buckets } = data)
 	$: currentBucket = buckets.find((bucket) => bucket.id === bucketID)
+
+	$: if (_mounted && currentBucket) {
+		try {
+			JSON.parse(currentBucket.json_data)
+			validJSON = true
+		} catch (e) {
+			validJSON = false
+		}
+	}
 
 	const handleDeleteBucket = async () => {
 		if (!currentBucket) return
@@ -53,7 +64,23 @@
 			return
 		}
 
-		await fetch(`/protected-api/update-bucket/`, {
+		await toast.promise(
+			saveBucket(),
+			{
+				loading: 'Saving...',
+				success: 'Changes saved!',
+				error: 'Could not save.',
+			},
+			{
+				position: 'bottom-right',
+			}
+		)
+
+		await invalidateAll()
+	}
+
+	async function saveBucket() {
+		const res = await fetch(`/protected-api/update-bucket/`, {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json',
@@ -63,7 +90,7 @@
 			}),
 		})
 
-		await invalidateAll()
+		return res
 	}
 
 	const copyApiURL = () => {
@@ -72,44 +99,61 @@
 		navigator.clipboard.writeText(
 			`http://localhost:5173/public-api/bucket?bucketID=${currentBucket.id}`
 		)
+
+		toast.success('Copied API URL!', {
+			position: 'bottom-right',
+		})
 	}
 </script>
 
 {#if currentBucket}
-	<main class="py-2 px-4 flex justify-between border-b">
+	<main class="p-2 sm:px-4 flex justify-between border-b">
 		<section class="flex justify-center items-center relative">
-			<div class="i-carbon-tag absolute left-2 pointer-events-none" />
+			<div
+				class="i-carbon-tag absolute left-2 pointer-events-none hidden sm:block" />
 			<input
 				class="input input-with-icon"
 				type="text"
 				bind:value={currentBucket.name} />
 		</section>
 
-		<section class="flex gap-3">
+		<section class="flex gap-3 items-center">
+			{#if !validJSON}
+				<div
+					transition:fade
+					class="px-2 text-xs border border-yellow-500 rounded-full text-yellow-500 hidden sm:block">
+					Invalid JSON
+				</div>
+
+				<div class="i-carbon-error flex text-yellow-500 sm:hidden" />
+			{/if}
+
 			<button
 				title="Copy API URL"
 				on:click={() => copyApiURL()}
-				class="btn">
+				class="btn h-[30px]">
 				<div class="i-carbon-copy text-base" />
-				<span>API</span>
+				<span class="hidden sm:block">API</span>
 			</button>
 			<button
+				disabled={!validJSON}
+				class:disabled={!validJSON}
 				title="Save changes"
-				class="btn"
+				class="btn h-[30px]"
 				on:click={() => handleUpdateBucket()}>
 				<div class="i-carbon-save text-base" />
-				<span>Save</span>
+				<span class="hidden sm:block">Save</span>
 			</button>
 
 			<button
 				title="Delete bucket"
-				class="btn"
+				class="btn h-[30px]"
 				class:canDelete
 				on:click={() => handleDeleteBucket()}>
 				<div class="i-carbon-trash-can text-base" />
 
 				{#if canDelete}
-					<span transition:fade>Delete</span>
+					<span class="hidden sm:block" transition:fade>Delete</span>
 				{/if}
 			</button>
 		</section>
@@ -128,5 +172,9 @@
 	.canDelete:hover {
 		@apply bg-red-500 border-red-500;
 		color: white !important;
+	}
+	.disabled {
+		@apply opacity-50;
+		pointer-events: none;
 	}
 </style>
