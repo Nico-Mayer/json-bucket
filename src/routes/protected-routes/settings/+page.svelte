@@ -16,6 +16,17 @@
 		if (error) console.log(error)
 		await invalidateAll()
 	}
+	function setTheme(theme: string) {
+		if (theme === 'dark') {
+			localStorage.setItem('theme', 'dark')
+			document.documentElement.classList.add('dark')
+			return
+		} else {
+			localStorage.setItem('theme', 'light')
+			document.documentElement.classList.remove('dark')
+			return
+		}
+	}
 </script>
 
 {#if user_metadata}
@@ -35,7 +46,7 @@
 			<img
 				src={user_metadata.avatar_url}
 				alt="avatar"
-				class="h-24 rounded" />
+				class="h-24 rounded-full mr-4" />
 		</section>
 
 		<section class="flex p-4 rounded border">
@@ -43,11 +54,11 @@
 				<strong class="my-2">Appearance</strong>
 
 				<div class="my-2 flex gap-2">
-					<button class="btn">
+					<button class="btn" on:click={() => setTheme('light')}>
 						<div class="i-carbon-sun" />
 						<span>Light</span>
 					</button>
-					<button class="btn">
+					<button class="btn" on:click={() => setTheme('dark')}>
 						<div class="i-carbon-moon" />
 						<span>Dark</span>
 					</button>
@@ -76,7 +87,8 @@
 
 <style scoped>
 	.delete-btn {
-		@apply bg-red-400 border-red-400 text-white;
+		color: white !important;
+		@apply bg-red-400 border-red-400;
 	}
 	.delete-btn:hover {
 		@apply bg-red-500 border-red-500 text-white;

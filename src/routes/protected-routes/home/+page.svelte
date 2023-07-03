@@ -21,20 +21,6 @@
 		const formattedTimestamp = `${year}-${month}-${day} ${hours}:${minutes}`
 		return formattedTimestamp
 	}
-
-	const handleUpdateBucket = async (newBucket: Bucket) => {
-		await fetch(`/protected-api/update-bucket/`, {
-			method: 'PUT',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({
-				newBucket,
-			}),
-		})
-
-		await invalidateAll()
-	}
 </script>
 
 <main class="flex flex-col justify-between h-[calc(100vh_-_57px)]">
@@ -42,7 +28,7 @@
 		{#each buckets as bucket}
 			<a
 				href={`/protected-routes/bucket/${bucket.id}`}
-				class="flex gap-4 py-2 px-4 border border-t-0 hover:bg-gray-100 items-center justify-between">
+				class="flex gap-4 py-2 px-4 border-b hover:bg-gray-100 dark:hover:bg-gray-800 items-center justify-between">
 				<div class="flex gap-5 items-center">
 					<span class="font-medium">{bucket.name}</span>
 					<span class="text-xs border px-2 rounded-full"

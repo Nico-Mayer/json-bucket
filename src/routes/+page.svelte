@@ -25,7 +25,7 @@
 	}
 </script>
 
-<section class="bg-white">
+<section>
 	<div class="lg:grid lg:min-h-screen lg:grid-cols-12">
 		<aside
 			class="relative block h-52 lg:order-last lg:col-span-5 lg:h-full xl:col-span-6">
@@ -52,7 +52,7 @@
 							stroke-linejoin="round"
 							stroke-linecap="round"
 							stroke-width="6"
-							stroke="hsla(220, 16%, 22%, 1)"
+							class="stroke-gray-700 dark:stroke-gray-200"
 							fill="none" /></pattern
 					></defs
 				><rect

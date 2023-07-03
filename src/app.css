@@ -4,13 +4,8 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-	--border-color: #e5e7eb; /* gray-200 */
-}
-
-/* Apply the border color to all elements */
 * {
-	border-color: var(--border-color);
+	@apply !border-gray-200 dark:!border-gray-700;
 }
 
 body {
@@ -22,12 +17,12 @@ body {
 	@apply flex items-center justify-center gap-2;
 	@apply text-sm;
 	@apply py-1 px-2 border rounded;
-	@apply text-gray-500;
+	@apply text-gray-500 dark:text-gray-400;
 	@apply transition-all duration-200;
 }
 
 .btn:hover {
-	@apply text-gray-900 border-gray-300;
+	@apply text-gray-900 border-gray-300 dark:text-gray-100 dark:border-gray-600;
 }
 
 .input {
@@ -53,7 +48,6 @@ body {
 }
 
 .cm-gutters {
-	border-color: var(--border-color) !important;
 	background-color: transparent !important;
 }
 .cm-gutterElement {
