@@ -2,6 +2,7 @@
 	import { goto, invalidateAll } from '$app/navigation'
 	import { page } from '$app/stores'
 	import { homeSearchTerm } from '$lib/stores/store'
+	import { toast } from 'svelte-sonner'
 
 	$: pathname = $page?.url.pathname
 	$: onHome = pathname.startsWith('/protected-routes/home')
@@ -15,14 +16,23 @@
 	let email = user_metadata?.email
 
 	const handleCreateBucket = async () => {
+		toast.promise(createNewBucket(), {
+			loading: 'Creating new bucket...',
+			success: 'Bucket created!',
+			error: 'Could not create bucket.',
+		})
+
+		$homeSearchTerm = ''
+		await invalidateAll()
+	}
+
+	async function createNewBucket() {
 		await fetch('/protected-api/new-bucket', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 			},
 		})
-		$homeSearchTerm = ''
-		await invalidateAll()
 	}
 
 	const handleGoBack = () => {
@@ -34,12 +44,12 @@
 </script>
 
 <nav
-	class="w-full px-2 sm:px-4 py-2 flex justify-between border-b items-center">
+	class="w-full px-2 sm:px-4 py-3 flex justify-between border-b items-center">
 	<section class="w-1/3 flex gap-2">
 		{#if onHome}
 			<button
 				on:click={() => handleCreateBucket()}
-				class="btn h-10 w-10 !p-0"
+				class="btn h-8 w-8 !p-0"
 				title="New bucket">
 				<div class="i-carbon-add text-xl" />
 			</button>
@@ -52,7 +62,7 @@
 		{:else if onBucket || onSettings}
 			<button
 				on:click={() => handleGoBack()}
-				class="btn h-10 w-10 !p-0"
+				class="btn h-8 w-8 !p-0"
 				title="Home">
 				<div class="i-carbon-home text-lg" />
 			</button>
@@ -63,7 +73,7 @@
 		<a
 			href="/protected-routes/home"
 			class="heading text-base md:text-lg flex justify-center items-center gap-2">
-			<div class="i-carbon-ibm-cloud-direct-link-2-connect" />
+			<div class="i-carbon-ibm-cloud-direct-link-2-connect text-xl" />
 			JSON Bucket
 		</a>
 	</section>
@@ -92,7 +102,7 @@
 		<input
 			bind:value={$homeSearchTerm}
 			type="text"
-			class="input w-full h-10"
+			class="input w-full h-8"
 			placeholder="Search" />
 	</section>
 {/if}

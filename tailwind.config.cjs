@@ -18,7 +18,7 @@ module.exports = {
 		},
 
 		animatedSettings: {
-			classes: ['wobble', 'swing', 'fast'],
+			classes: [],
 		},
 	},
 	plugins: [

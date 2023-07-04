@@ -20,6 +20,8 @@
 	let validName: boolean = true
 	let unsavedChanges: boolean = false
 	let cooldownTimer: NodeJS.Timeout
+	let showCopySuccessIcon = false
+	let isSaving = false
 
 	onMount(() => {
 		bucketID = $page.params.id
@@ -33,12 +35,10 @@
 		clearTimeout(cooldownTimer)
 		cooldownTimer = setTimeout(() => {
 			if (_mounted && canUpdate && unsavedChanges) {
-				console.log('Saving bucket...')
 				handleUpdateBucket()
 			}
 		}, 1000)
 	}
-
 	$: if (_mounted && currentBucket && initialBucket) {
 		const currentBucketString = JSON.stringify(currentBucket)
 		const initialBucketString = JSON.stringify(initialBucket)
@@ -82,24 +82,29 @@
 				body: JSON.stringify({ bucketID }),
 			})
 			canDelete = false
+
+			toast.error('Bucket deleted!')
+
 			goto('/protected-routes/home')
 		}
 	}
 
 	async function handleUpdateBucket() {
 		if (!canUpdate) return
-
-		await toast.promise(saveBucket(), {
+		isSaving = true
+		toast.promise(saveBucket(), {
 			loading: 'Saving...',
 			success: 'Changes saved!',
 			error: 'Could not save.',
 		})
 
-		// await invalidateAll()
-
 		initialBucket = {
 			...buckets.find((bucket) => bucket.id === bucketID),
 		} as Bucket
+
+		setTimeout(() => {
+			isSaving = false
+		}, 1000)
 	}
 
 	async function saveBucket() {
@@ -118,11 +123,13 @@
 
 	const copyApiURL = () => {
 		if (!currentBucket) return
-
+		showCopySuccessIcon = true
 		navigator.clipboard.writeText(
 			`${PUBLIC_API_URL}/bucket?bucketID=${currentBucket.id}`
 		)
-
+		setTimeout(() => {
+			showCopySuccessIcon = false
+		}, 2000)
 		toast.success('Copied to clipboard!')
 	}
 </script>
@@ -143,7 +150,9 @@
 
 		<section class="flex gap-3 items-center">
 			{#if unsavedChanges}
-				<div transition:fade class="badge badge-warning">
+				<div
+					transition:fade
+					class="badge badge-warning hidden sm:block">
 					Unsaved changes
 				</div>
 			{/if}
@@ -154,15 +163,18 @@
 					class="badge badge-warning hidden sm:block">
 					Invalid JSON
 				</div>
-
-				<div class="i-carbon-error flex text-yellow-500 sm:hidden" />
 			{/if}
 
 			<button
 				title="Copy API URL"
 				on:click={() => copyApiURL()}
 				class="btn h-[30px]">
-				<div class="i-carbon-copy text-base" />
+				{#if showCopySuccessIcon}
+					<div in:fade class="i-carbon-checkmark text-base" />
+				{:else}
+					<div in:fade class="i-carbon-copy text-base" />
+				{/if}
+
 				<span class="hidden sm:block">API</span>
 			</button>
 			<button

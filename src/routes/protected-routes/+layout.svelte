@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { activeTheme } from '$lib/stores/store'
-	import Navbar from '../Navbar.svelte'
+	import Navbar from '$lib/Navbar.svelte'
 	import { Toaster } from 'svelte-sonner'
 
 	export let data
@@ -11,7 +11,9 @@
 <Navbar user_metadata={session?.user.user_metadata} />
 <slot />
 <Toaster
+	toastOptions={{
+		class: 'my-toast',
+	}}
 	richColors={false}
 	position="bottom-right"
-	theme={$activeTheme}
-	closeButton />
+	theme={$activeTheme} />

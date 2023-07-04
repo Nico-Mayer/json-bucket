@@ -57,6 +57,11 @@ body {
 	@apply bg-secondaryLightHover dark:bg-secondaryDarkHover;
 	@apply border-black/30 dark:border-white/30;
 }
+.input:hover {
+	@apply outline-none;
+	@apply !text-black/80 dark:!text-white/80;
+	@apply border-black/30 dark:border-white/30;
+}
 .input-with-icon {
 	@apply sm:pl-9 !important;
 }
@@ -158,4 +163,12 @@ body {
 	content: none !important;
 	padding: 0px !important;
 	@apply bg-red-500;
+}
+
+/* Toast */
+.my-toast {
+	@apply !shadow-none;
+	/* @apply !bg-secondaryLight dark:!bg-secondaryDark; */
+	@apply !border-black/10 dark:!border-white/10;
+	@apply !text-black/60 dark:!text-white/60;
 }
