@@ -68,7 +68,7 @@ body {
 }
 .badge-warning {
 	@apply opacity-100;
-	@apply !text-yellow-500 !border-yellow-500;
+	@apply !text-yellow-700 dark:!text-yellow-500 !border-yellow-500;
 }
 .heading {
 	font-family: 'Noto Sans', sans-serif;
@@ -110,7 +110,6 @@ body {
 	@apply !border-black/10 dark:!border-white/10;
 	background-color: transparent !important;
 }
-
 .cm-gutterElement {
 	background-color: transparent !important;
 }
@@ -118,19 +117,19 @@ body {
 	background-color: transparent !important;
 }
 .cm-activeLine {
-	@apply !bg-secondaryLightHover dark:!bg-secondaryDarkHover;
+	@apply dark:!bg-[#444444]/50 !bg-[#eeeeee]/50;
 }
 .ͼc {
 	/* bool in codemirror */
-	@apply !text-[#1c6b48];
+	@apply !text-[#A3BE8C] dark:!text-[#1c6b48];
 }
 .ͼe {
 	/* string in codemirror */
-	@apply !text-[#b56959] dark:!text-[#d48372];
+	@apply !text-[#D08770] dark:!text-[#d48372];
 }
 .ͼd {
 	/* number in codemirror */
-	@apply !text-[#296aa3] dark:!text-[#6394bf];
+	@apply !text-[#79c0ff] dark:!text-[#6394bf];
 }
 .ͼ4 {
 	color: red;
@@ -144,5 +143,19 @@ body {
 }
 
 .cm-selectionBackground {
-	@apply !bg-secondaryLightHover dark:!bg-secondaryDarkHover;
+	@apply !bg-[#dddddd] dark:!bg-[#444444];
+}
+.cm-tooltip {
+	@apply !bg-secondaryLight dark:!bg-secondaryDark;
+	@apply !border-black/10 dark:!border-white/10;
+}
+.cm-gutter-lint {
+	@apply !items-center;
+	width: 5px !important;
+}
+
+.cm-lint-marker {
+	content: none !important;
+	padding: 0px !important;
+	@apply bg-red-500;
 }

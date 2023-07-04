@@ -1,8 +1,10 @@
 <script lang="ts">
-	import { goto, invalidateAll } from '$app/navigation'
+	import { PUBLIC_API_URL } from '$env/static/public'
+	import { goto } from '$app/navigation'
 	import { page } from '$app/stores'
 	import CodeMirror from 'svelte-codemirror-editor'
-	import { json } from '@codemirror/lang-json'
+	import { json, jsonParseLinter } from '@codemirror/lang-json'
+	import { linter, lintGutter } from '@codemirror/lint'
 	import { onMount } from 'svelte'
 	import { fade } from 'svelte/transition'
 	import { toast } from 'svelte-sonner'
@@ -17,6 +19,7 @@
 	let validJSON: boolean = true
 	let validName: boolean = true
 	let unsavedChanges: boolean = false
+	let cooldownTimer: NodeJS.Timeout
 
 	onMount(() => {
 		bucketID = $page.params.id
@@ -25,6 +28,16 @@
 		} as Bucket
 		_mounted = true
 	})
+
+	$: {
+		clearTimeout(cooldownTimer)
+		cooldownTimer = setTimeout(() => {
+			if (_mounted && canUpdate && unsavedChanges) {
+				console.log('Saving bucket...')
+				handleUpdateBucket()
+			}
+		}, 1000)
+	}
 
 	$: if (_mounted && currentBucket && initialBucket) {
 		const currentBucketString = JSON.stringify(currentBucket)
@@ -49,7 +62,7 @@
 		canUpdate = validJSON && validName
 	}
 
-	const handleDeleteBucket = async () => {
+	async function handleDeleteBucket() {
 		if (!currentBucket) return
 		if (!canDelete) {
 			canDelete = true
@@ -73,7 +86,7 @@
 		}
 	}
 
-	const handleUpdateBucket = async () => {
+	async function handleUpdateBucket() {
 		if (!canUpdate) return
 
 		await toast.promise(saveBucket(), {
@@ -82,11 +95,11 @@
 			error: 'Could not save.',
 		})
 
+		// await invalidateAll()
+
 		initialBucket = {
 			...buckets.find((bucket) => bucket.id === bucketID),
 		} as Bucket
-
-		await invalidateAll()
 	}
 
 	async function saveBucket() {
@@ -107,7 +120,7 @@
 		if (!currentBucket) return
 
 		navigator.clipboard.writeText(
-			`http://localhost:5173/public-api/bucket?bucketID=${currentBucket.id}`
+			`${PUBLIC_API_URL}/bucket?bucketID=${currentBucket.id}`
 		)
 
 		toast.success('Copied to clipboard!')
@@ -177,7 +190,10 @@
 	</main>
 
 	{#if _mounted}
-		<CodeMirror bind:value={currentBucket.json_data} lang={json()} />
+		<CodeMirror
+			bind:value={currentBucket.json_data}
+			lang={json()}
+			extensions={[lintGutter(), linter(jsonParseLinter())]} />
 	{/if}
 {/if}
 
