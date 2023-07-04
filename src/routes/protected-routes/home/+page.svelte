@@ -1,10 +1,15 @@
 <script lang="ts">
 	import { invalidateAll } from '$app/navigation'
 	import { onMount } from 'svelte'
+	import { homeSearchTerm } from '$lib/stores/store'
 
 	export let data
 
 	$: ({ buckets } = data)
+
+	$: filteredBuckets = buckets.filter((bucket) =>
+		bucket.name.toLowerCase().includes($homeSearchTerm.toLowerCase())
+	)
 
 	onMount(() => {
 		invalidateAll()
@@ -23,14 +28,15 @@
 	}
 </script>
 
-<main class="flex flex-col justify-between h-[calc(100vh_-_57px)]">
+<main
+	class="flex flex-col justify-between sm:h-[calc(100vh_-_57px)] h-[calc(100vh_-_113px)]">
 	<section class="flex flex-col overflow-y-auto">
-		{#each buckets as bucket}
+		{#each filteredBuckets as bucket}
 			<a
 				href={`/protected-routes/bucket/${bucket.id}`}
 				class="flex gap-4 py-2 px-4 border-b hover:bg-secondaryLightHover dark:hover:bg-secondaryDarkHover items-center justify-between">
 				<div class="flex gap-5 items-center">
-					<span class="font-medium">{bucket.name}</span>
+					<span class="">{bucket.name}</span>
 					<span class="badge"
 						>{formatTimestamp(bucket.last_changed)}</span>
 				</div>

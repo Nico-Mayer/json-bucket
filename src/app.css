@@ -13,23 +13,39 @@ body {
 	margin: 0 !important;
 }
 
+/* UI Elements */
 .btn {
 	@apply dark:bg-secondaryDark bg-secondaryLight;
 	@apply flex items-center justify-center gap-2;
 	@apply text-sm;
 	@apply py-1 px-4 border rounded;
-	@apply !text-black/60 dark:!text-white/60;
-	@apply transition-all duration-200;
+	@apply text-black/60 dark:text-white/60;
 }
 
 .btn:hover {
-	@apply !text-black/80 dark:!text-white/80;
+	@apply text-black/80 dark:text-white/80;
 	@apply dark:bg-secondaryDarkHover bg-secondaryLightHover;
 	@apply border-black/30 dark:border-white/30;
 }
 
+.active-btn {
+	@apply bg-secondaryLightActive dark:bg-secondaryDarkActive;
+}
+.active-btn:hover {
+	@apply bg-secondaryLightActive dark:bg-secondaryDarkActive;
+}
+
+.delete-btn {
+	color: white !important;
+	@apply !bg-red-500 !border-red-600;
+}
+.delete-btn:hover {
+	color: white !important;
+	@apply !border-red-700 !bg-red-600;
+}
+
 .input {
-	@apply !text-black/80 dark:!text-white/80;
+	@apply text-black/60 dark:text-white/60;
 	@apply border rounded;
 	@apply py-1 px-2;
 	@apply text-sm;
@@ -37,16 +53,50 @@ body {
 }
 .input:focus {
 	@apply outline-none;
+	@apply !text-black/80 dark:!text-white/80;
+	@apply bg-secondaryLightHover dark:bg-secondaryDarkHover;
 	@apply border-black/30 dark:border-white/30;
 }
 .input-with-icon {
-	@apply sm:pl-8 !important;
+	@apply sm:pl-9 !important;
 }
 
 .badge {
+	@apply opacity-50;
 	@apply text-xs border px-2 sm:px-2.5  rounded-full font-mono;
 	@apply bg-secondaryLight dark:bg-secondaryDark;
 }
+.badge-warning {
+	@apply opacity-100;
+	@apply !text-yellow-500 !border-yellow-500;
+}
+.heading {
+	font-family: 'Noto Sans', sans-serif;
+}
+
+/* Scrollbars */
+
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	@apply bg-transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
+
+/* Codemirror */
 
 .cm-editor {
 	@apply !text-[#1e1e1e] dark:!text-[#d4cfbf];
@@ -85,6 +135,9 @@ body {
 .ͼ4 {
 	color: red;
 }
+.ͼb {
+	@apply !text-[#b05a78] dark:!border-[#db889a];
+}
 
 .cm-cursor {
 	@apply !border-[#393a34] dark:!border-[#d4cfbf];
@@ -92,8 +145,4 @@ body {
 
 .cm-selectionBackground {
 	@apply !bg-secondaryLightHover dark:!bg-secondaryDarkHover;
-}
-
-.heading {
-	font-family: 'Noto Sans', sans-serif;
 }

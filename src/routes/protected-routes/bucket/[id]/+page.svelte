@@ -5,23 +5,34 @@
 	import { json } from '@codemirror/lang-json'
 	import { onMount } from 'svelte'
 	import { fade } from 'svelte/transition'
-	import { toast } from 'svelte-french-toast'
+	import { toast } from 'svelte-sonner'
 
 	export let data
 
+	let initialBucket: Bucket | undefined
 	let _mounted = false
 	let canDelete = false
+	let canUpdate = false
 	let bucketID: string
 	let validJSON: boolean = true
+	let validName: boolean = true
+	let unsavedChanges: boolean = false
 
 	onMount(() => {
 		bucketID = $page.params.id
+		initialBucket = {
+			...buckets.find((bucket) => bucket.id === bucketID),
+		} as Bucket
 		_mounted = true
 	})
 
+	$: if (_mounted && currentBucket && initialBucket) {
+		const currentBucketString = JSON.stringify(currentBucket)
+		const initialBucketString = JSON.stringify(initialBucket)
+		unsavedChanges = currentBucketString !== initialBucketString
+	}
 	$: ({ buckets } = data)
 	$: currentBucket = buckets.find((bucket) => bucket.id === bucketID)
-
 	$: if (_mounted && currentBucket) {
 		try {
 			JSON.parse(currentBucket.json_data)
@@ -29,6 +40,13 @@
 		} catch (e) {
 			validJSON = false
 		}
+	}
+	$: if (_mounted && currentBucket) {
+		validName =
+			currentBucket.name.length > 0 && currentBucket.name.length < 32
+	}
+	$: if (_mounted && currentBucket) {
+		canUpdate = validJSON && validName
 	}
 
 	const handleDeleteBucket = async () => {
@@ -56,25 +74,17 @@
 	}
 
 	const handleUpdateBucket = async () => {
-		if (!currentBucket) return
-		try {
-			JSON.parse(currentBucket.json_data)
-		} catch (e) {
-			alert('Invalid JSON')
-			return
-		}
+		if (!canUpdate) return
 
-		await toast.promise(
-			saveBucket(),
-			{
-				loading: 'Saving...',
-				success: 'Changes saved!',
-				error: 'Could not save.',
-			},
-			{
-				position: 'bottom-right',
-			}
-		)
+		await toast.promise(saveBucket(), {
+			loading: 'Saving...',
+			success: 'Changes saved!',
+			error: 'Could not save.',
+		})
+
+		initialBucket = {
+			...buckets.find((bucket) => bucket.id === bucketID),
+		} as Bucket
 
 		await invalidateAll()
 	}
@@ -100,9 +110,7 @@
 			`http://localhost:5173/public-api/bucket?bucketID=${currentBucket.id}`
 		)
 
-		toast.success('Copied API URL!', {
-			position: 'bottom-right',
-		})
+		toast.success('Copied to clipboard!')
 	}
 </script>
 
@@ -110,18 +118,27 @@
 	<main class="p-2 sm:px-4 flex justify-between border-b">
 		<section class="flex justify-center items-center relative">
 			<div
-				class="i-carbon-tag absolute left-2 pointer-events-none hidden sm:block" />
+				class="i-carbon-tag text-sm absolute left-3 pointer-events-none hidden sm:block opacity-80"
+				class:!text-yellow-500={!validName} />
 			<input
+				minlength="1"
 				class="input input-with-icon"
+				class:!border-yellow-500={!validName}
 				type="text"
 				bind:value={currentBucket.name} />
 		</section>
 
 		<section class="flex gap-3 items-center">
+			{#if unsavedChanges}
+				<div transition:fade class="badge badge-warning">
+					Unsaved changes
+				</div>
+			{/if}
+
 			{#if !validJSON}
 				<div
 					transition:fade
-					class="badge !border-yellow-500 !text-yellow-500 hidden sm:block">
+					class="badge badge-warning hidden sm:block">
 					Invalid JSON
 				</div>
 
@@ -136,8 +153,8 @@
 				<span class="hidden sm:block">API</span>
 			</button>
 			<button
-				disabled={!validJSON}
-				class:disabled={!validJSON}
+				disabled={!canUpdate}
+				class:disabled={!canUpdate}
 				title="Save changes"
 				class="btn h-[30px]"
 				on:click={() => handleUpdateBucket()}>
@@ -148,7 +165,7 @@
 			<button
 				title="Delete bucket"
 				class="btn h-[30px]"
-				class:canDelete
+				class:delete-btn={canDelete}
 				on:click={() => handleDeleteBucket()}>
 				<div class="i-carbon-trash-can text-base" />
 
@@ -165,14 +182,6 @@
 {/if}
 
 <style scoped>
-	.canDelete {
-		@apply bg-red-400 border-red-400;
-		color: white;
-	}
-	.canDelete:hover {
-		@apply bg-red-500 border-red-500;
-		color: white !important;
-	}
 	.disabled {
 		@apply opacity-50;
 		pointer-events: none;

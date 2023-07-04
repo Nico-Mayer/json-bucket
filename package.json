@@ -32,7 +32,7 @@
 		"@supabase/supabase-js": "^2.26.0",
 		"codemirror": "^6.0.1",
 		"svelte-codemirror-editor": "^1.1.0",
-		"svelte-french-toast": "^1.1.0",
+		"svelte-sonner": "^0.0.11",
 		"tailwindcss-animatecss": "^3.0.4"
 	}
 }

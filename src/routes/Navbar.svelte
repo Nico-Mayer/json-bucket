@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { goto, invalidateAll } from '$app/navigation'
 	import { page } from '$app/stores'
+	import { homeSearchTerm } from '$lib/stores/store'
 
 	$: pathname = $page?.url.pathname
 	$: onHome = pathname.startsWith('/protected-routes/home')
@@ -20,7 +21,7 @@
 				'Content-Type': 'application/json',
 			},
 		})
-
+		$homeSearchTerm = ''
 		await invalidateAll()
 	}
 
@@ -34,7 +35,7 @@
 
 <nav
 	class="w-full px-2 sm:px-4 py-2 flex justify-between border-b items-center">
-	<section class="w-1/3">
+	<section class="w-1/3 flex gap-2">
 		{#if onHome}
 			<button
 				on:click={() => handleCreateBucket()}
@@ -42,6 +43,12 @@
 				title="New bucket">
 				<div class="i-carbon-add text-xl" />
 			</button>
+
+			<input
+				bind:value={$homeSearchTerm}
+				type="text"
+				placeholder="Search"
+				class="input hidden sm:block" />
 		{:else if onBucket || onSettings}
 			<button
 				on:click={() => handleGoBack()}
@@ -79,3 +86,13 @@
 		</button>
 	</section>
 </nav>
+
+{#if onHome}
+	<section class="flex sm:hidden p-2">
+		<input
+			bind:value={$homeSearchTerm}
+			type="text"
+			class="input w-full h-10"
+			placeholder="Search" />
+	</section>
+{/if}

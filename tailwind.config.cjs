@@ -9,9 +9,11 @@ module.exports = {
 			colors: {
 				secondaryDark: '#101112',
 				secondaryDarkHover: '#17181a',
+				secondaryDarkActive: '#2e2f31',
 
-				secondaryLight: '#fafaf9',
-				secondaryLightHover: '#f5f5f4',
+				secondaryLight: '#f9fafb',
+				secondaryLightHover: '#f3f4f6',
+				secondaryLightActive: '#e5e7eb',
 			},
 		},
 

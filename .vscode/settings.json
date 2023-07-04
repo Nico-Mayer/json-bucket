@@ -14,5 +14,6 @@
 		".vscode": true,
 		".svelte-kit": true
 	},
-	"hide-files.files": ["node_modules", ".vscode", ".svelte-kit"]
+	"hide-files.files": ["node_modules", ".vscode", ".svelte-kit"],
+	"cSpell.words": ["sonner"]
 }
