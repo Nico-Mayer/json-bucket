@@ -47,7 +47,9 @@
 				on:click={() => goto(`/protected-routes/bucket/${bucket.id}`)}
 				class="flex gap-4 border-b hover:bg-secondaryLightHover dark:hover:bg-secondaryDarkHover items-center justify-between hover:text-black/90 hover:dark:text-white/90">
 				<div class="flex items-center">
-					<button
+					<!-- svelte-ignore a11y-click-events-have-key-events -->
+					<!-- svelte-ignore a11y-no-static-element-interactions -->
+					<div
 						class="pl-2 sm:pl-4 py-4 pr-5 flex items-center justify-center group text-base"
 						on:click|stopPropagation={() =>
 							selectBucket(bucket.id)}>
@@ -57,7 +59,7 @@
 							<div
 								class="i-carbon-checkbox opacity-50 group-hover:opacity-100" />
 						{/if}
-					</button>
+					</div>
 
 					<div class="flex gap-5 items-center">
 						<span class="">{bucket.name}</span>
