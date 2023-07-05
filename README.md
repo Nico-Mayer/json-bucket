@@ -43,9 +43,7 @@ Easily log in with your social accounts such as GitHub, Google, or Discord. Once
 
 ## ToDo
 
--   [ ] Improve home dashboard
--   [ ] More Auth Providers
--   [ ] Improve settings page
+-   [ ] Delete Account
 
 <!-- ROADMAP -->
 

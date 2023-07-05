@@ -103,7 +103,7 @@
 					</div>
 				</div>
 				<button on:click={handleCreateBucket} class="btn">
-					Create Bucket
+					Create bucket
 				</button>
 			</div>
 		</div>

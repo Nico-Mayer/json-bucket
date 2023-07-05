@@ -79,19 +79,60 @@
 					anywhere through generated API routes.
 				</p>
 
-				<button
-					class="btn mt-4 text-xl"
-					on:click={() => signInWithProvider('github')}>
-					<div class="i-simple-icons-github" />
-					Sign in with Github
-				</button>
-				<button
-					class="btn mt-4 text-xl"
-					on:click={() => signInWithProvider('discord')}>
-					<div class="i-simple-icons-github" />
-					Sign in with Discord
-				</button>
+				<div class="p-5 flex flex-col gap-5 mt-5">
+					<button
+						class="btn text-xl w-full h-10 github-btn"
+						on:click={() => signInWithProvider('github')}>
+						<div class="i-simple-icons-github text-lg" />
+						Sign in with Github
+					</button>
+					<button
+						class="btn text-xl w-full h-10 discord-btn"
+						on:click={() => signInWithProvider('discord')}>
+						<div class="i-simple-icons-discord text-lg" />
+						Sign in with Discord
+					</button>
+					<button
+						class="btn text-xl w-full h-10 google-btn"
+						on:click={() => signInWithProvider('google')}>
+						<img
+							src="https://api.iconify.design/logos:google-icon.svg?color=%23030303"
+							alt="Google Icon"
+							class="w-[18px]" />
+						Sign in with Google
+					</button>
+				</div>
 			</div>
 		</main>
 	</div>
 </section>
+
+<style lang="postcss">
+	.discord-btn {
+		transition: all 0.2s ease-in-out;
+		background-color: #7289da !important;
+		border: #7289da !important;
+		color: #fff !important;
+	}
+	.discord-btn:hover {
+		background-color: #7983f5 !important;
+		border: #7289da !important;
+	}
+
+	.github-btn {
+		transition: all 0.2s ease-in-out;
+		background-color: black !important;
+		color: #fff !important;
+	}
+	.github-btn:hover {
+		@apply !bg-black/90;
+	}
+	.google-btn {
+		transition: all 0.2s ease-in-out;
+		background-color: #fff !important;
+		color: #000 !important;
+	}
+	.google-btn:hover {
+		background-color: #f1f3f4 !important;
+	}
+</style>
