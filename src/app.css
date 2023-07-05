@@ -49,6 +49,9 @@ body {
 	color: white !important;
 	@apply !border-red-700 !bg-red-600;
 }
+.disabled-btn {
+	@apply !bg-gray-300 !border-gray-400 !text-gray-400;
+}
 
 .input {
 	@apply text-black/60 dark:text-white/60;

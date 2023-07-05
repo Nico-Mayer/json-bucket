@@ -7,6 +7,9 @@
 
 	let user_metadata: UserMetadata
 
+	let deleteInputValue = ''
+
+	$: canDelete = deleteInputValue === 'DELETE'
 	$: ({ session, supabase } = data)
 	$: if (session) {
 		user_metadata = session?.user?.user_metadata
@@ -95,7 +98,22 @@
 						<div class="i-carbon-logout" />
 						<span>Logout</span>
 					</button>
-					<button class="btn delete-btn" on:click={handleDeleteUser}>
+
+					<p>
+						Danger if you delete your account all data associated
+						with it will get lost.
+					</p>
+					<span>Type in DELETE</span>
+
+					<input
+						class="input"
+						type="text"
+						bind:value={deleteInputValue} />
+					<button
+						disabled={!canDelete}
+						class:disabled-btn={!canDelete}
+						class="btn delete-btn"
+						on:click={handleDeleteUser}>
 						<div class="i-carbon-trash-can" />
 						<span>Delete Account</span>
 					</button>
