@@ -52,9 +52,9 @@ Easily log in with your social accounts such as GitHub, Google, or Discord. Once
 
 ## Roadmap
 
--   [ ] Improve JSON Linting
 -   [ ] Implement automatic JSON formatting
 -   [ ] Implement private api key generation and endpoints
+-   [ ] Editor Keyboard Shortcuts
 
 See the [open issues](https://github.com/Nico-Mayer/json-bucket/issues) for a full list of proposed features (and known issues).
 

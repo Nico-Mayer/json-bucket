@@ -10,10 +10,9 @@
 		"**/.project": true,
 		"**/.settings": true,
 		"**/.factorypath": true,
-		"node_modules": true,
 		".vscode": true,
 		".svelte-kit": true
 	},
-	"hide-files.files": ["node_modules", ".vscode", ".svelte-kit"],
+	"hide-files.files": [".vscode", ".svelte-kit"],
 	"cSpell.words": ["sonner"]
 }

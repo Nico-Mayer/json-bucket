@@ -74,5 +74,68 @@
             }
         ],
         "tests": []
+    },
+    {
+        "_id": "9980f50d-3aa4-466d-8cae-6c25b567902b",
+        "colId": "history",
+        "containerId": "",
+        "name": "https://jsonformatter.curiousconcept.com/?data=%7B%22Much%20JSON%21%22%3A%22So%20Wow%21%22%7D&process=true#",
+        "url": "https://jsonformatter.curiousconcept.com/?data=%7B%22Much%20JSON%21%22%3A%22So%20Wow%21%22%7D&process=true#",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-05T10:58:21.968Z",
+        "modified": "2023-07-05T10:58:21.968Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "data",
+                "value": "%7B%22Much%20JSON%21%22%3A%22So%20Wow%21%22%7D",
+                "isPath": false
+            },
+            {
+                "name": "process",
+                "value": "true#",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "380f69c9-789b-43dd-a5bc-18e3d8b5a458",
+        "colId": "history",
+        "containerId": "",
+        "name": "http://localhost:5173/protected-api/format-json",
+        "url": "http://localhost:5173/protected-api/format-json",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-05T11:31:33.997Z",
+        "modified": "2023-07-05T11:31:33.997Z",
+        "headers": [],
+        "params": [],
+        "body": {
+            "type": "json",
+            "raw": "{\n  \"hallo\": 123\n}",
+            "form": []
+        },
+        "tests": []
+    },
+    {
+        "_id": "a6106da5-78b8-47a3-ac70-24fbc860010e",
+        "colId": "history",
+        "containerId": "",
+        "name": "http://[::1]/protected-api/format-json",
+        "url": "http://[::1]/protected-api/format-json",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-05T11:31:44.336Z",
+        "modified": "2023-07-05T11:31:44.336Z",
+        "headers": [],
+        "params": [],
+        "body": {
+            "type": "json",
+            "raw": "{\n  \"hallo\": 123\n}",
+            "form": []
+        },
+        "tests": []
     }
 ]
