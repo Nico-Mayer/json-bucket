@@ -5,6 +5,7 @@
 	"prepare": "svelte-kit sync",
 	"scripts": {
 		"dev": "vite dev",
+		"devHost": "vite dev --host",
 		"build": "vite build",
 		"preview": "vite preview"
 	},

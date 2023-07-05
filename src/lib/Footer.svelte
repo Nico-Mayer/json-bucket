@@ -1,5 +1,5 @@
 <footer
-	class="w-full self-end justify-end items-center flex py-1 px-4 border-t font-light">
+	class="w-full self-end justify-end items-center py-1 px-4 border-t font-light hidden sm:flex">
 	<span class="text-xs align-middle mr-1"> built by </span>
 	<a
 		class="opacity-70 hover:opacity-100 transition-opacity duration-300 font-normal text-xs"

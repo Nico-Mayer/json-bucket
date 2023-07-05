@@ -23,9 +23,6 @@
 			success: 'Bucket created!',
 			error: 'Could not create bucket.',
 		})
-
-		$homeSearchTerm = ''
-		await invalidateAll()
 	}
 
 	async function createNewBucket() {
@@ -35,6 +32,8 @@
 				'Content-Type': 'application/json',
 			},
 		})
+		$homeSearchTerm = ''
+		await invalidateAll()
 	}
 
 	async function handleDeleteBuckets() {
@@ -79,7 +78,7 @@
 </script>
 
 <nav
-	class="w-full px-2 sm:px-4 py-3 flex justify-between border-b items-center">
+	class="w-full px-2 sm:px-4 py-3 flex justify-between border-b items-center sticky top-0">
 	<section class="w-1/3 flex gap-2">
 		{#if onHome}
 			<button

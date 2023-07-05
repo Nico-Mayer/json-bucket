@@ -41,6 +41,6 @@
 </svelte:head>
 
 <main
-	class="w-screen h-screen text-black/80 dark:bg-black dark:text-white/80 overflow-hidden">
+	class="text-black/80 dark:bg-black dark:text-white/80 overflow-hidden w-screen">
 	<slot />
 </main>

@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+	height: --webkit-fill-available !important;
+}
+
 * {
 	@apply border-black/10 dark:border-white/10;
 }
@@ -11,6 +15,8 @@
 body {
 	padding: 0 !important;
 	margin: 0 !important;
+	height: --webkit-fill-available !important;
+	@apply !bg-white dark:!bg-black;
 }
 
 /* UI Elements */
