@@ -48,38 +48,46 @@
 
 {#if user_metadata}
 	<main class="w-full flex justify-center flex-col p-4 gap-4">
-		<section class="flex p-4 rounded border justify-between">
-			<div class="flex flex-col px-4">
-				<strong class="my-2">Profile</strong>
+		<section
+			class="flex p-4 sm:p-8 rounded border justify-between items-center">
+			<div class="flex items-center">
+				<img
+					src={user_metadata.avatar_url}
+					alt="avatar"
+					class="h-16 sm:h-20 rounded-full" />
+				<div class="flex flex-col mx-4">
+					<strong class="my-1 sm:my-2 text-lg">Profile</strong>
 
-				<p class="text-left text-xs block">
-					<strong class="block font-medium">
-						{user_metadata.name}
-					</strong>
+					<p class="text-left text-xs block">
+						<strong class="block font-medium">
+							{user_metadata.name}
+						</strong>
 
-					<span class="opacity-60">{user_metadata.email}</span>
-				</p>
+						<span class="opacity-60">{user_metadata.email}</span>
+					</p>
+				</div>
 			</div>
-			<img
-				src={user_metadata.avatar_url}
-				alt="avatar"
-				class="h-24 rounded-full mr-4" />
+
+			<button title="Logout" class="btn h-8" on:click={handleLogout}>
+				<div class="i-carbon-logout" />
+				<span class="hidden sm:block">Logout</span>
+			</button>
 		</section>
 
-		<section class="flex p-4 rounded border">
-			<div class="flex flex-col px-4">
-				<strong class="my-2">Appearance</strong>
+		<section class="flex p-4 sm:p-8 rounded border">
+			<div class="flex flex-col">
+				<strong class="my-1 sm:my-2 text-lg">Appearance</strong>
 
-				<div class="my-2 flex gap-2">
+				<div class="my-2 flex">
 					<button
-						class="btn"
+						class="btn !rounded-l !rounded-r-none h-8"
 						on:click={() => setTheme('light')}
 						class:active-btn={$activeTheme === 'light'}>
 						<div class="i-carbon-sun" />
 						<span>Light</span>
 					</button>
 					<button
-						class="btn"
+						class="btn !rounded-r !rounded-l-none h-8"
 						on:click={() => setTheme('dark')}
 						class:active-btn={$activeTheme === 'dark'}>
 						<div class="i-carbon-moon" />
@@ -89,31 +97,28 @@
 			</div>
 		</section>
 
-		<section class="flex p-4 rounded border">
-			<div class="flex flex-col px-4">
-				<strong class="my-2">Account</strong>
+		<section class="flex p-4 sm:p-8 rounded border">
+			<div class="flex flex-col">
+				<strong class="mb-1 sm:mb-2 text-lg">Account</strong>
+				<h3 class="my-2 font-bold text-red-500">Delete Account</h3>
 
-				<div class="my-2 flex gap-2">
-					<button class="btn" on:click={handleLogout}>
-						<div class="i-carbon-logout" />
-						<span>Logout</span>
-					</button>
+				<p class="text-sm my-1 sm:my-2 text-red-500">
+					All data connected to your account will be permanently lost
+					upon its deletion.
+				</p>
+				<span class="font-mono my-2 text-sm text-red-500"
+					>Type in "DELETE"</span>
 
-					<p>
-						Danger if you delete your account all data associated
-						with it will get lost.
-					</p>
-					<span>Type in DELETE</span>
-
+				<div class="flex flex-col gap-2">
 					<input
-						class="input"
+						class="input h-8"
 						type="text"
 						maxlength="6"
 						bind:value={deleteInputValue} />
 					<button
 						disabled={!canDelete}
 						class:disabled-btn={!canDelete}
-						class="btn delete-btn"
+						class="btn delete-btn h-8"
 						on:click={handleDeleteUser}>
 						<div class="i-carbon-trash-can" />
 						<span>Delete Account</span>

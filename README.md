@@ -43,8 +43,6 @@ Easily log in with your social accounts such as GitHub, Google, or Discord. Once
 
 ## ToDo
 
--   [ ] Improve settings / profile Page
-
 <!-- ROADMAP -->
 
 ## Features

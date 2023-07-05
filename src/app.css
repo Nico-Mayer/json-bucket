@@ -36,6 +36,7 @@ body {
 
 .active-btn {
 	@apply bg-secondaryLightActive dark:bg-secondaryDarkActive;
+	@apply !font-medium;
 }
 .active-btn:hover {
 	@apply bg-secondaryLightActive dark:bg-secondaryDarkActive;
@@ -53,7 +54,13 @@ body {
 	@apply !text-black/80 dark:!text-white/80;
 	@apply dark:!bg-secondaryDarkHover !bg-secondaryLightHover;
 	@apply !border-black/30 dark:!border-white/30;
-	@apply !opacity-40;
+	@apply !opacity-30;
+}
+.disabled-btn:hover {
+	@apply !text-black/80 dark:!text-white/80;
+	@apply dark:!bg-secondaryDarkHover !bg-secondaryLightHover;
+	@apply !border-black/30 dark:!border-white/30;
+	@apply !opacity-30;
 }
 
 .input {
