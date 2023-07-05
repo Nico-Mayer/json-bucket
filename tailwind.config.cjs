@@ -18,7 +18,7 @@ module.exports = {
 		},
 
 		animatedSettings: {
-			classes: [],
+			classes: ['animated', 'fast', 'infinite', 'pulse'],
 		},
 	},
 	plugins: [

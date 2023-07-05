@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation'
+	import type { Provider } from '@supabase/supabase-js'
 	import { onMount } from 'svelte'
 
 	export let data
@@ -17,11 +18,11 @@
 		}
 	}
 
-	const signInWithGithub = async () => {
+	const signInWithProvider = async (provider: Provider) => {
 		const { error } = await supabase.auth.signInWithOAuth({
-			provider: 'github',
+			provider: provider,
 		})
-		if (error) console.log(error)
+		if (error) console.error(error)
 	}
 </script>
 
@@ -78,9 +79,17 @@
 					anywhere through generated API routes.
 				</p>
 
-				<button class="btn mt-4 text-xl" on:click={signInWithGithub}>
+				<button
+					class="btn mt-4 text-xl"
+					on:click={() => signInWithProvider('github')}>
 					<div class="i-simple-icons-github" />
 					Sign in with Github
+				</button>
+				<button
+					class="btn mt-4 text-xl"
+					on:click={() => signInWithProvider('discord')}>
+					<div class="i-simple-icons-github" />
+					Sign in with Discord
 				</button>
 			</div>
 		</main>

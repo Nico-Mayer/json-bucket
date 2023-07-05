@@ -6,7 +6,6 @@ export async function DELETE({ locals, request }) {
 
 	const body = await request.json()
 
-	console.log(body)
 	const { buckets } = body
 
 	const { id: owner } = session.user

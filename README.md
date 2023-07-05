@@ -41,6 +41,12 @@ Easily log in with your social accounts such as GitHub, Google, or Discord. Once
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+## ToDo
+
+-   [ ] Improve home dashboard
+-   [ ] More Auth Providers
+-   [ ] Improve settings page
+
 <!-- ROADMAP -->
 
 ## Features
