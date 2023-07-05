@@ -53,7 +53,7 @@ body {
 	@apply !text-black/80 dark:!text-white/80;
 	@apply dark:!bg-secondaryDarkHover !bg-secondaryLightHover;
 	@apply !border-black/30 dark:!border-white/30;
-	@apply !opacity-40 !pointer-events-none;
+	@apply !opacity-40;
 }
 
 .input {
