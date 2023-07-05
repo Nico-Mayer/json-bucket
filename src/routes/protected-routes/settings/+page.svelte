@@ -17,6 +17,17 @@
 		if (error) console.error(error)
 		await invalidateAll()
 	}
+
+	async function handleDeleteUser() {
+		await fetch('/protected-api/delete-user', {
+			method: 'DELETE',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		})
+		await invalidateAll()
+	}
+
 	function setTheme(theme: string) {
 		if (theme === 'dark') {
 			localStorage.setItem('theme', 'dark')
@@ -84,7 +95,7 @@
 						<div class="i-carbon-logout" />
 						<span>Logout</span>
 					</button>
-					<button class="btn delete-btn">
+					<button class="btn delete-btn" on:click={handleDeleteUser}>
 						<div class="i-carbon-trash-can" />
 						<span>Delete Account</span>
 					</button>
