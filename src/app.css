@@ -50,7 +50,10 @@ body {
 	@apply !border-red-700 !bg-red-600;
 }
 .disabled-btn {
-	@apply !bg-gray-300 !border-gray-400 !text-gray-400;
+	@apply !bg-gray-300 !border-gray-400 !text-gray-400 !opacity-50;
+}
+.disabled-btn:hover {
+	@apply !bg-gray-300 !border-gray-400 !text-gray-400 !opacity-50;
 }
 
 .input {

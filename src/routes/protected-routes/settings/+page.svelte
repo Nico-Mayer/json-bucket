@@ -108,6 +108,7 @@
 					<input
 						class="input"
 						type="text"
+						maxlength="6"
 						bind:value={deleteInputValue} />
 					<button
 						disabled={!canDelete}
