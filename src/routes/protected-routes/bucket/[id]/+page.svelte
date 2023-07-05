@@ -21,7 +21,6 @@
 	let unsavedChanges: boolean = false
 	let cooldownTimer: NodeJS.Timeout
 	let showCopySuccessIcon = false
-	let isSaving = false
 
 	onMount(() => {
 		bucketID = $page.params.id
@@ -79,7 +78,7 @@
 				headers: {
 					'Content-Type': 'application/json',
 				},
-				body: JSON.stringify({ bucketID }),
+				body: JSON.stringify({ buckets: [bucketID] }),
 			})
 			canDelete = false
 
@@ -91,7 +90,6 @@
 
 	async function handleUpdateBucket() {
 		if (!canUpdate) return
-		isSaving = true
 		toast.promise(saveBucket(), {
 			loading: 'Saving...',
 			success: 'Changes saved!',
@@ -101,10 +99,6 @@
 		initialBucket = {
 			...buckets.find((bucket) => bucket.id === bucketID),
 		} as Bucket
-
-		setTimeout(() => {
-			isSaving = false
-		}, 1000)
 	}
 
 	async function saveBucket() {

@@ -5,18 +5,22 @@ export async function DELETE({ locals, request }) {
 	if (!session) return new Response('Unauthorized', { status: 401 })
 
 	const body = await request.json()
-	const { bucketID } = body
+
+	console.log(body)
+	const { buckets } = body
 
 	const { id: owner } = session.user
 
-	const { data, error } = await supabase
-		.from('buckets')
-		.delete()
-		.match({ id: bucketID, owner: owner })
+	for (const bucketId of buckets) {
+		const { error } = await supabase
+			.from('buckets')
+			.delete()
+			.match({ id: bucketId, owner: owner })
 
-	if (error) {
-		console.error(error)
-		return new Response('Internal Server Error', { status: 500 })
+		if (error) {
+			console.error(error)
+			return new Response('Internal Server Error', { status: 500 })
+		}
 	}
 
 	return new Response('Bucket Deleted', { status: 200 })

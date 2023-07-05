@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { goto, invalidateAll } from '$app/navigation'
 	import { page } from '$app/stores'
-	import { homeSearchTerm } from '$lib/stores/store'
+	import { homeSearchTerm, selectedBuckets } from '$lib/stores/store'
 	import { toast } from 'svelte-sonner'
+	import { fade } from 'svelte/transition'
 
 	$: pathname = $page?.url.pathname
 	$: onHome = pathname.startsWith('/protected-routes/home')
@@ -14,6 +15,7 @@
 	let avatar_url = user_metadata?.avatar_url
 	let name = user_metadata?.name
 	let email = user_metadata?.email
+	let canDelete = false
 
 	const handleCreateBucket = async () => {
 		toast.promise(createNewBucket(), {
@@ -35,6 +37,39 @@
 		})
 	}
 
+	async function handleDeleteBuckets() {
+		if ($selectedBuckets.length <= 0) return
+		if (!canDelete) {
+			canDelete = true
+
+			setTimeout(() => {
+				canDelete = false
+			}, 5000)
+			return
+		}
+
+		if (canDelete) {
+			toast.promise(deleteBuckets(), {
+				loading: 'Deleting buckets...',
+				success: 'Buckets deleted!',
+				error: 'Could not delete buckets.',
+			})
+		}
+	}
+
+	async function deleteBuckets() {
+		await fetch(`/protected-api/delete-bucket/`, {
+			method: 'DELETE',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({ buckets: $selectedBuckets }),
+		})
+		canDelete = false
+		$selectedBuckets = []
+		invalidateAll()
+	}
+
 	const handleGoBack = () => {
 		goto('/protected-routes/home')
 	}
@@ -49,7 +84,7 @@
 		{#if onHome}
 			<button
 				on:click={() => handleCreateBucket()}
-				class="btn h-8 w-8 !p-0"
+				class="btn h-8 w-8 !p-0 shrink-0"
 				title="New bucket">
 				<div class="i-carbon-add text-xl" />
 			</button>
@@ -59,6 +94,22 @@
 				type="text"
 				placeholder="Search"
 				class="input hidden sm:block" />
+
+			{#if $selectedBuckets.length > 0}
+				<button
+					transition:fade
+					on:click={() => handleDeleteBuckets()}
+					title="Delete buckets"
+					class:delete-btn={canDelete}
+					class="btn h-[32px] !hidden sm:!flex">
+					<div class="i-carbon-trash-can text-base" />
+
+					{#if canDelete}
+						<span class="hidden sm:block" transition:fade
+							>Delete</span>
+					{/if}
+				</button>
+			{/if}
 		{:else if onBucket || onSettings}
 			<button
 				on:click={() => handleGoBack()}
@@ -98,11 +149,22 @@
 </nav>
 
 {#if onHome}
-	<section class="flex sm:hidden p-2">
+	<section class="flex sm:hidden p-2 gap-2">
 		<input
 			bind:value={$homeSearchTerm}
 			type="text"
 			class="input w-full h-8"
 			placeholder="Search" />
+
+		{#if $selectedBuckets.length > 0}
+			<button
+				transition:fade
+				title="Delete bucket"
+				on:click={() => handleDeleteBuckets()}
+				class:delete-btn={canDelete}
+				class="btn h-[32px]">
+				<div class="i-carbon-trash-can text-base" />
+			</button>
+		{/if}
 	</section>
 {/if}

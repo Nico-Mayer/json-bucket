@@ -113,14 +113,9 @@ body {
 
 .cm-gutters {
 	@apply !border-black/10 dark:!border-white/10;
-	background-color: transparent !important;
+	@apply !bg-white dark:!bg-black;
 }
-.cm-gutterElement {
-	background-color: transparent !important;
-}
-.cm-foldGutter {
-	background-color: transparent !important;
-}
+
 .cm-activeLine {
 	@apply dark:!bg-[#444444]/50 !bg-[#eeeeee]/50;
 }

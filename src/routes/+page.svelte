@@ -30,7 +30,6 @@
 		<aside
 			class="relative block h-52 lg:order-last lg:col-span-5 lg:h-full xl:col-span-6">
 			<svg
-				class="absolute inset-0 h-full w-full object-cover"
 				id="patternId"
 				width="100%"
 				height="100%"
@@ -41,19 +40,23 @@
 						patternUnits="userSpaceOnUse"
 						width="40"
 						height="59.428"
-						patternTransform="scale(3) rotate(105)"
-						><rect x="0" y="0" width="100%" height="100%" /><path
+						patternTransform="scale(3) rotate(65)"
+						><rect
+							x="0"
+							y="0"
+							width="100%"
+							height="100%"
+							fill="hsla(0, 0%, 100%, 0)" /><path
 							d="M0 70.975V47.881m20-1.692L8.535 52.808v13.239L20 72.667l11.465-6.62V52.808zm0-32.95l11.465-6.62V-6.619L20-13.24 8.535-6.619V6.619L20 13.24m8.535 4.927v13.238L40 38.024l11.465-6.62V18.166L40 11.546zM20 36.333L0 47.88m0 0v23.094m0 0l20 11.548 20-11.548V47.88m0 0L20 36.333m0 0l20 11.549M0 11.547l-11.465 6.619v13.239L0 38.025l11.465-6.62v-13.24L0 11.548v-23.094l20-11.547 20 11.547v23.094M20 36.333V13.24"
-							stroke-linejoin="round"
-							stroke-linecap="round"
-							stroke-width="6"
+							stroke-linecap="square"
+							stroke-width="5"
 							class="stroke-black/90 dark:stroke-white/90"
 							fill="none" /></pattern
 					></defs
 				><rect
 					width="800%"
 					height="800%"
-					transform="translate(0,0)"
+					transform="translate(0,-47.568)"
 					fill="url(#a)" /></svg>
 		</aside>
 
