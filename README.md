@@ -14,7 +14,9 @@
     <img src="https://api.iconify.design/carbon:ibm-cloud-direct-link-2-connect.svg?color=%23ffffff" alt="Logo" width="90" height="90">
   </a>
 
-  <h3 align="center">JSON Bucket</h3>
+  <h3 align="center">
+    <a href="json-bucket.vercel.app">JSON Bucket</a>
+  </h3>
 </div>
 
 > JSON Bucket is currently in its Alpha phase, pls don't store sensible data or use it in a production environment.
