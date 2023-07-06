@@ -2,7 +2,6 @@
 	import { PUBLIC_DEMO_EMAIL } from '$env/static/public'
 	import { activeTheme } from '$lib/stores/store'
 	import { invalidateAll } from '$app/navigation'
-	import type { UserMetadata } from '@supabase/supabase-js'
 	import { toast } from 'svelte-sonner'
 
 	export let data
@@ -18,7 +17,12 @@
 	$: user = session?.user
 	$: user_metadata = session?.user?.user_metadata
 	$: {
-		name = user_metadata?.name ?? 'No name found'
+		name =
+			user_metadata?.preferred_username ??
+			user_metadata?.user_name ??
+			user_metadata?.name ??
+			user_metadata?.full_name ??
+			'No name found'
 		email = user?.email ?? 'No email found'
 		avatar_url =
 			user_metadata?.avatar_url ??

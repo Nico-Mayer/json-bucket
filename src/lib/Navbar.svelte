@@ -19,12 +19,20 @@
 	$: user = session?.user
 	$: user_metadata = session?.user?.user_metadata
 	$: {
-		name = user_metadata?.name ?? 'No name found'
+		name =
+			user_metadata?.preferred_username ??
+			user_metadata?.user_name ??
+			user_metadata?.name ??
+			user_metadata?.full_name ??
+			'No name found'
 		email = user?.email ?? 'No email found'
 		avatar_url =
 			user_metadata?.avatar_url ??
 			'https://api.iconify.design/carbon:user-avatar.svg?color=%23878787'
 	}
+
+	//$: console.log(session)
+	$: console.log(user_metadata)
 
 	let canDelete = false
 
