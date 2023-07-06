@@ -49,7 +49,9 @@
 	<meta
 		itemprop="description"
 		content="Effortlessly store your JSON data and seamlessly access it anywhere through generated API routes." />
-	<meta itemprop="image" content="/static/favicon.png" />
+	<meta
+		itemprop="image"
+		content="https://github.com/Nico-Mayer/json-bucket/blob/main/static/meta.png?raw=true" />
 
 	<!-- Facebook Meta Tags -->
 	<meta property="og:url" content="https://json-bucket.vercel.app/" />
@@ -58,7 +60,9 @@
 	<meta
 		property="og:description"
 		content="Effortlessly store your JSON data and seamlessly access it anywhere through generated API routes." />
-	<meta property="og:image" content="/static/favicon.png" />
+	<meta
+		property="og:image"
+		content="https://github.com/Nico-Mayer/json-bucket/blob/main/static/meta.png?raw=true" />
 
 	<!-- Twitter Meta Tags -->
 	<meta name="twitter:card" content="summary_large_image" />
@@ -66,14 +70,18 @@
 	<meta
 		name="twitter:description"
 		content="Effortlessly store your JSON data and seamlessly access it anywhere through generated API routes." />
-	<meta name="twitter:image" content="/static/favicon.png" />
+	<meta
+		name="twitter:image"
+		content="https://github.com/Nico-Mayer/json-bucket/blob/main/static/meta.png?raw=true" />
 
 	<!-- Discord Meta Tags -->
 	<meta property="og:title" content="JSON Bucket" />
 	<meta
 		property="og:description"
 		content="Effortlessly store your JSON data and seamlessly access it anywhere through generated API routes." />
-	<meta property="og:image" content="../../static/favicon.png" />
+	<meta
+		property="og:image"
+		content="https://github.com/Nico-Mayer/json-bucket/blob/main/static/meta.png?raw=true" />
 	<meta property="og:url" content="https://json-bucket.vercel.app/" />
 	<meta property="theme-color" content="#7289DA" />
 
@@ -82,7 +90,9 @@
 	<meta
 		property="og:description"
 		content="Effortlessly store your JSON data and seamlessly access it anywhere through generated API routes." />
-	<meta property="og:image" content="/static/favicon.png" />
+	<meta
+		property="og:image"
+		content="https://github.com/Nico-Mayer/json-bucket/blob/main/static/meta.png?raw=true" />
 	<meta property="og:url" content="https://json-bucket.vercel.app/" />
 
 	<!-- Github Meta Tags -->
@@ -91,7 +101,9 @@
 	<meta
 		property="og:description"
 		content="Effortlessly store your JSON data and seamlessly access it anywhere through generated API routes." />
-	<meta property="og:image" content="/static/favicon.png" />
+	<meta
+		property="og:image"
+		content="https://github.com/Nico-Mayer/json-bucket/blob/main/static/meta.png?raw=true" />
 </svelte:head>
 
 <main
