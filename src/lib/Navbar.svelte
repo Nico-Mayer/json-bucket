@@ -32,7 +32,7 @@
 	}
 
 	//$: console.log(session)
-	$: console.log(user_metadata)
+	//$: console.log(user_metadata)
 
 	let canDelete = false
 
