@@ -2,19 +2,30 @@
 	import { goto, invalidateAll } from '$app/navigation'
 	import { page } from '$app/stores'
 	import { homeSearchTerm, selectedBuckets } from '$lib/stores/store'
+	import type { Session } from '@supabase/supabase-js'
 	import { toast } from 'svelte-sonner'
 	import { fade } from 'svelte/transition'
 
-	$: pathname = $page?.url.pathname
+	export let session: Session | null
+
+	let name: string
+	let email: string
+	let avatar_url: string
+
+	$: pathname = $page?.url?.pathname
 	$: onHome = pathname.startsWith('/protected-routes/home')
 	$: onBucket = pathname.startsWith('/protected-routes/bucket')
 	$: onSettings = pathname.startsWith('/protected-routes/settings')
+	$: user = session?.user
+	$: user_metadata = session?.user?.user_metadata
+	$: {
+		name = user_metadata?.name ?? 'No name found'
+		email = user?.email ?? 'No email found'
+		avatar_url =
+			user_metadata?.avatar_url ??
+			'https://api.iconify.design/carbon:user-avatar.svg?color=%23878787'
+	}
 
-	export let user_metadata
-
-	let avatar_url = user_metadata?.avatar_url
-	let name = user_metadata?.name
-	let email = user_metadata?.email
 	let canDelete = false
 
 	const handleCreateBucket = async () => {

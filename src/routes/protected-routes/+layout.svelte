@@ -6,5 +6,5 @@
 	$: ({ session } = data)
 </script>
 
-<Navbar user_metadata={session?.user.user_metadata} />
+<Navbar {session} />
 <slot />

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { PUBLIC_DEMO_EMAIL } from '$env/static/public'
 	import { activeTheme } from '$lib/stores/store'
 	import { invalidateAll } from '$app/navigation'
 	import type { UserMetadata } from '@supabase/supabase-js'
@@ -6,16 +7,22 @@
 
 	export let data
 
-	let user_metadata: UserMetadata
-
 	let deleteInputValue = ''
+	let name: string
+	let email: string
+	let avatar_url: string
 
-	$: email = session?.user.email
-	$: canDelete =
-		deleteInputValue === 'DELETE' && email !== 'testimctestface90@gmail.com'
 	$: ({ session, supabase } = data)
-	$: if (session) {
-		user_metadata = session?.user?.user_metadata
+
+	$: canDelete = deleteInputValue === 'DELETE' && email !== PUBLIC_DEMO_EMAIL
+	$: user = session?.user
+	$: user_metadata = session?.user?.user_metadata
+	$: {
+		name = user_metadata?.name ?? 'No name found'
+		email = user?.email ?? 'No email found'
+		avatar_url =
+			user_metadata?.avatar_url ??
+			'https://api.iconify.design/carbon:user-avatar.svg?color=%23878787'
 	}
 
 	async function handleLogout() {
@@ -59,8 +66,7 @@
 			class="flex p-4 sm:p-8 rounded border justify-between items-center">
 			<div class="flex items-center">
 				<img
-					src={user_metadata.avatar_url ??
-						'https://api.iconify.design/material-symbols:account-circle.svg?color=%23878787'}
+					src={avatar_url}
 					alt="avatar"
 					class="h-16 sm:h-20 rounded-full" />
 				<div class="flex flex-col mx-4">
@@ -68,7 +74,7 @@
 
 					<p class="text-left text-xs block">
 						<strong class="block font-medium">
-							{user_metadata.name ?? 'Tester'}
+							{name}
 						</strong>
 
 						<span class="opacity-60">{email}</span>
