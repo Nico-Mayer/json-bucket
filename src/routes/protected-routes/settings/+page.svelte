@@ -2,6 +2,7 @@
 	import { activeTheme } from '$lib/stores/store'
 	import { invalidateAll } from '$app/navigation'
 	import type { UserMetadata } from '@supabase/supabase-js'
+	import { toast } from 'svelte-sonner'
 
 	export let data
 
@@ -16,8 +17,12 @@
 	}
 
 	async function handleLogout() {
-		const { error } = await supabase.auth.signOut()
-		if (error) console.error(error)
+		toast.promise(supabase.auth.signOut(), {
+			loading: 'Logging out...',
+			success: 'Logged out!',
+			error: 'Could not log out.',
+		})
+
 		await invalidateAll()
 	}
 

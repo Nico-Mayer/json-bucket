@@ -65,7 +65,7 @@
 		{#each filteredBuckets as bucket}
 			<button
 				on:click={() => goto(`/protected-routes/bucket/${bucket.id}`)}
-				class="flex gap-4 border-b hover:bg-secondaryLightHover dark:hover:bg-secondaryDarkHover items-center justify-between hover:text-black/90 hover:dark:text-white/90">
+				class="flex group gap-4 border-b hover:bg-secondaryLightHover dark:hover:bg-secondaryDarkHover items-center justify-between hover:text-black/90 hover:dark:text-white/90">
 				<div class="flex items-center">
 					<!-- svelte-ignore a11y-click-events-have-key-events -->
 					<!-- svelte-ignore a11y-no-static-element-interactions -->
@@ -82,13 +82,19 @@
 					</div>
 
 					<div class="flex gap-5 items-center">
-						<span class="">{bucket.name}</span>
-						<span class="badge"
-							>{formatTimestamp(bucket.last_changed)}</span>
+						<span class="truncate">{bucket.name}</span>
+						<span class="badge shrink-0">
+							{formatTimestamp(bucket.last_changed)}
+						</span>
 					</div>
 				</div>
 
-				<div class="i-carbon-choose-item h-full mr-2 sm:mr-4" />
+				<div class="h-full mr-2 sm:mr-4 shrink-0 flex">
+					<div
+						class="self-center border-r flex pr-1 group-hover:p-0 transition-all duration-300 !border-black/80 dark:!border-white/80">
+						<div class="i-carbon-arrow-right self-center" />
+					</div>
+				</div>
 			</button>
 		{/each}
 	</section>

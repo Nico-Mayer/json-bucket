@@ -3,6 +3,7 @@
 	import { activeTheme } from '$lib/stores/store'
 	import { invalidate } from '$app/navigation'
 	import { onMount } from 'svelte'
+	import { Toaster } from 'svelte-sonner'
 
 	export let data
 
@@ -43,4 +44,11 @@
 <main
 	class="text-black/80 dark:bg-black dark:text-white/80 overflow-hidden w-screen">
 	<slot />
+	<Toaster
+		toastOptions={{
+			class: 'my-toast',
+		}}
+		richColors={false}
+		position="bottom-right"
+		theme={$activeTheme} />
 </main>
