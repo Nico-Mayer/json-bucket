@@ -73,7 +73,7 @@
 	<meta
 		property="og:description"
 		content="Effortlessly store your JSON data and seamlessly access it anywhere through generated API routes." />
-	<meta property="og:image" content="/static/favicon.png" />
+	<meta property="og:image" content="../../static/favicon.png" />
 	<meta property="og:url" content="https://json-bucket.vercel.app/" />
 	<meta property="theme-color" content="#7289DA" />
 
