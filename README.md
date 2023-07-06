@@ -25,8 +25,9 @@
 
 ## About The Project
 
-Screenshot / Demo
-
+<p align="center">
+<img src="./static/showcase.gif" />
+</p>
 JSON Bucket was developed to simplify the process of storing JSON data in the cloud and accessing / editing it from anywhere on the web. Its purpose is to make your life easier while developing your next side project.
 
 Easily log in with your social accounts such as GitHub, Google, or Discord. Once logged in, you can create a new bucket and paste your JSON data into the editor. JSON Bucket will then provide you with an API endpoint where you can access this data.
