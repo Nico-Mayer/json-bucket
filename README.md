@@ -19,7 +19,7 @@
   </h3>
 </div>
 
-> JSON Bucket is currently in its Alpha phase, pls don't store sensible data or use it in a production environment.
+> JSON Bucket is currently in its Alpha phase, pls don't store sensitive data or use it in a production environment.
 
 <!-- ABOUT THE PROJECT -->
 
