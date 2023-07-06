@@ -99,7 +99,9 @@
 							src="https://api.iconify.design/logos:google-icon.svg?color=%23030303"
 							alt="Google Icon"
 							class="w-[18px]" />
-						Sign in with Google
+						<span class="hidden sm:block">Sign in with Google</span>
+						<span class="font-mono text-xs"
+							>(Test user available!)</span>
 					</button>
 				</div>
 			</div>
