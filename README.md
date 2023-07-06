@@ -6,7 +6,6 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
 
 <!-- PROJECT LOGO -->
 <br />
@@ -30,20 +29,10 @@ JSON Bucket was developed to simplify the process of storing JSON data in the cl
 
 Easily log in with your social accounts such as GitHub, Google, or Discord. Once logged in, you can create a new bucket and paste your JSON data into the editor. JSON Bucket will then provide you with an API endpoint where you can access this data.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ### Built With
 
 -   [![SvelteKit][svelte.dev]][svelte-url]
 -   [![Supabase][supabase.com]][supabase-url]
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-## ToDo
-
-<!-- ROADMAP -->
 
 ## Features
 
@@ -57,10 +46,9 @@ Easily log in with your social accounts such as GitHub, Google, or Discord. Once
 -   [ ] Implement automatic JSON formatting
 -   [ ] Implement private api key generation and endpoints
 -   [ ] Editor Keyboard Shortcuts
+-   [ ] Implement soft delete buckets (trash)
 
 See the [open issues](https://github.com/Nico-Mayer/json-bucket/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- CONTRIBUTING -->
 
@@ -68,25 +56,11 @@ See the [open issues](https://github.com/Nico-Mayer/json-bucket/issues) for a fu
 
 If you'd like to contribute to json-bucket, please check our contributing guidelines for more information on how to get started.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- LICENSE -->
-
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- CONTACT -->
-
 ## Acknowledgments
 
 -   [svelte](https://svelte.dev/)
 -   [supabase](https://supabase.com/)
 -   [tailwind](https://tailwindcss.com/)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
@@ -99,8 +73,6 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [stars-url]: https://github.com/Nico-Mayer/json-bucket/stargazers
 [issues-shield]: https://img.shields.io/github/issues/Nico-Mayer/json-bucket.svg?style=for-the-badge
 [issues-url]: https://github.com/Nico-Mayer/json-bucket/issues
-[license-shield]: https://img.shields.io/github/license/Nico-Mayer/json-bucket.svg?style=for-the-badge
-[license-url]: https://github.com/Nico-Mayer/json-bucket/blob/master/LICENSE.txt
 [product-screenshot]: frontend/src/assets/images/app.png
 [svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
 [supabase.com]: https://shields.io/badge/supabase-black?logo=supabase&style=for-the-badge

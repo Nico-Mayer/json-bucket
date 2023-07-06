@@ -21,17 +21,26 @@
 		toast.promise(createNewBucket(), {
 			loading: 'Creating new bucket...',
 			success: 'Bucket created!',
-			error: 'Could not create bucket.',
+			error: (data) => {
+				return `${data}`
+			},
 		})
 	}
 
 	async function createNewBucket() {
-		await fetch('/protected-api/new-bucket', {
+		const res = await fetch('/protected-api/new-bucket', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 			},
 		})
+
+		const body = await res.json()
+
+		if (res.ok === false) {
+			throw new Error(body.message)
+		}
+
 		$homeSearchTerm = ''
 		await invalidateAll()
 	}
@@ -47,10 +56,15 @@
 			return
 		}
 
+		const successString =
+			$selectedBuckets.length > 1
+				? `${$selectedBuckets.length} Buckets`
+				: 'Bucket'
+
 		if (canDelete) {
 			toast.promise(deleteBuckets(), {
 				loading: 'Deleting buckets...',
-				success: 'Buckets deleted!',
+				success: successString + ' deleted!',
 				error: 'Could not delete buckets.',
 			})
 		}

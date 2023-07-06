@@ -90,6 +90,12 @@
 
 	async function handleUpdateBucket() {
 		if (!canUpdate) return
+
+		if (!unsavedChanges) {
+			toast.success('Bucket is up to date!')
+			return
+		}
+
 		toast.promise(saveBucket(), {
 			loading: 'Saving...',
 			success: 'Changes saved!',
