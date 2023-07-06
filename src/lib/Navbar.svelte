@@ -149,13 +149,14 @@
 			<span class="sr-only">Menu</span>
 			<img
 				alt="avatar"
-				src={avatar_url}
+				src={avatar_url ??
+					'https://api.iconify.design/material-symbols:account-circle.svg?color=%23878787'}
 				class="h-8 w-8 rounded-full object-cover" />
 
 			<p class="ms-2 hidden text-left text-xs sm:block">
-				<strong class="block font-medium">{name}</strong>
+				<strong class="block font-medium">{name ?? 'Tester'}</strong>
 
-				<span class="opacity-60">{email}</span>
+				<span class="opacity-60">{email ?? 'Tester@test.com'}</span>
 			</p>
 		</button>
 	</section>

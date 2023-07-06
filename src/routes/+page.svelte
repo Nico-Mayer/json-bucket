@@ -1,7 +1,9 @@
 <script lang="ts">
+	import { PUBLIC_DEMO_EMAIL, PUBLIC_DEMO_PW } from '$env/static/public'
 	import { goto } from '$app/navigation'
 	import type { Provider } from '@supabase/supabase-js'
 	import { onMount } from 'svelte'
+	import { toast } from 'svelte-sonner'
 
 	export let data
 	let { supabase } = data
@@ -23,6 +25,18 @@
 			provider: provider,
 		})
 		if (error) console.error(error)
+	}
+
+	async function signInWithDemo() {
+		const { data, error } = await supabase.auth.signInWithPassword({
+			email: PUBLIC_DEMO_EMAIL,
+			password: PUBLIC_DEMO_PW,
+		})
+
+		if (error) {
+			console.log(error)
+			toast.error('Failed to log in with Demo User')
+		}
 	}
 </script>
 
@@ -102,6 +116,12 @@
 							class="w-[18px]" />
 						<span>Sign in with Google</span>
 					</button>
+
+					<button
+						class="btn demo-btn !text-xl w-full h-10 google-btn"
+						on:click={() => signInWithDemo()}>
+						<span>Demo</span>
+					</button>
 				</div>
 			</div>
 		</main>
@@ -135,5 +155,8 @@
 	}
 	.google-btn:hover {
 		background-color: #f1f3f4 !important;
+	}
+	.demo-btn {
+		font-family: 'Virgil', Segoe UI Emoji;
 	}
 </style>

@@ -10,7 +10,9 @@
 
 	let deleteInputValue = ''
 
-	$: canDelete = deleteInputValue === 'DELETE'
+	$: email = session?.user.email
+	$: canDelete =
+		deleteInputValue === 'DELETE' && email !== 'testimctestface90@gmail.com'
 	$: ({ session, supabase } = data)
 	$: if (session) {
 		user_metadata = session?.user?.user_metadata
@@ -57,7 +59,8 @@
 			class="flex p-4 sm:p-8 rounded border justify-between items-center">
 			<div class="flex items-center">
 				<img
-					src={user_metadata.avatar_url}
+					src={user_metadata.avatar_url ??
+						'https://api.iconify.design/material-symbols:account-circle.svg?color=%23878787'}
 					alt="avatar"
 					class="h-16 sm:h-20 rounded-full" />
 				<div class="flex flex-col mx-4">
@@ -65,10 +68,10 @@
 
 					<p class="text-left text-xs block">
 						<strong class="block font-medium">
-							{user_metadata.name}
+							{user_metadata.name ?? 'Tester'}
 						</strong>
 
-						<span class="opacity-60">{user_metadata.email}</span>
+						<span class="opacity-60">{email}</span>
 					</p>
 				</div>
 			</div>
