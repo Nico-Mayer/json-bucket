@@ -99,10 +99,67 @@
 							src="https://api.iconify.design/logos:google-icon.svg?color=%23030303"
 							alt="Google Icon"
 							class="w-[18px]" />
-						<span class="hidden sm:block">Sign in with Google</span>
-						<span class="font-mono text-xs"
-							>(Test user available!)</span>
+						<span>Sign in with Google</span>
 					</button>
+					<svg
+						class="flex self-center"
+						version="1.1"
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 225.19529755860572 97.94735221117736"
+						width="225.19529755860572"
+						height="97.94735221117736">
+						<!-- svg-source:excalidraw -->
+
+						<defs>
+							<style class="style-fonts">
+								@font-face {
+									font-family: 'Virgil';
+									src: url('https://excalidraw.com/Virgil.woff2');
+								}
+								@font-face {
+									font-family: 'Cascadia';
+									src: url('https://excalidraw.com/Cascadia.woff2');
+								}
+							</style>
+						</defs>
+						<g
+							transform="translate(11.855469067394779 62.94735221117736) rotate(0 101.66991424560547 12.5)"
+							><text
+								x="0"
+								y="0"
+								font-family="Virgil, Segoe UI Emoji"
+								font-size="20px"
+								class="!fill-black/90 dark:!fill-white/90"
+								text-anchor="start"
+								style="white-space: pre;"
+								direction="ltr"
+								dominant-baseline="text-before-edge"
+								>Test user available!</text
+							></g
+						><g stroke-linecap="round"
+							><g
+								transform="translate(76.85546906739478 52.94735221117736) rotate(0 -33.186121161282074 -21.354576246440416)"
+								><path
+									d="M0.48 0.24 C-6.3 -1.95, -29.04 -5.95, -40.26 -13.15 C-51.48 -20.35, -62.53 -38.11, -66.86 -42.95 M-0.72 -0.68 C-7.72 -2.77, -30.73 -5.39, -41.35 -12.21 C-51.96 -19.03, -60.28 -36.26, -64.41 -41.6"
+									class=" !stroke-black/90 dark:!stroke-white/90"
+									stroke-width="1"
+									fill="none" /></g
+							><g
+								transform="translate(76.85546906739478 52.94735221117736) rotate(0 -33.186121161282074 -21.354576246440416)"
+								><path
+									d="M-47.88 -29.83 C-55.61 -34.86, -59.04 -37.94, -63.03 -43.24 M-48.2 -28.91 C-52.26 -33.33, -56.91 -35.72, -64.04 -42.01"
+									class=" !stroke-black/90 dark:!stroke-white/90"
+									stroke-width="1"
+									fill="none" /></g
+							><g
+								transform="translate(76.85546906739478 52.94735221117736) rotate(0 -33.186121161282074 -21.354576246440416)"
+								><path
+									d="M-59.5 -22.32 C-63.33 -29.92, -62.84 -35.52, -63.03 -43.24 M-59.82 -21.39 C-60.84 -27.67, -62.51 -31.99, -64.04 -42.01"
+									class=" !stroke-black/90 dark:!stroke-white/90"
+									stroke-width="1"
+									fill="none" /></g
+							></g
+						><mask /></svg>
 				</div>
 			</div>
 		</main>
