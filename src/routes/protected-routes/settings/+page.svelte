@@ -22,7 +22,7 @@
 			user_metadata?.user_name ??
 			user_metadata?.name ??
 			user_metadata?.full_name ??
-			'No name found'
+			'Test User'
 		email = user?.email ?? 'No email found'
 		avatar_url =
 			user_metadata?.avatar_url ??
