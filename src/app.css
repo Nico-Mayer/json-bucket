@@ -91,7 +91,7 @@ body {
 .badge {
 	@apply opacity-50;
 	@apply text-xs border px-2 sm:px-2.5  rounded-full font-mono;
-	@apply bg-secondaryLight dark:bg-secondaryDark;
+	@apply !bg-secondaryLight dark:!bg-secondaryDark;
 }
 .badge-warning {
 	@apply opacity-100;

@@ -211,6 +211,7 @@
 		background-color: #f1f3f4 !important;
 	}
 	.demo-btn {
+		@apply !text-black/90 dark:!text-white/90;
 		font-family: 'Virgil', Segoe UI Emoji;
 	}
 </style>
