@@ -77,19 +77,18 @@
 	<main class="w-full flex justify-center flex-col p-4 gap-4">
 		{#if isTestUser}
 			<section
-				class="flex p-4 sm:p-8 rounded border justify-between items-center">
+				class="flex px-2 sm:px-4 py-2 rounded border justify-between items-center">
 				<div class="flex items-center">
 					<div class="flex flex-col mx-4">
 						<strong class="my-1 sm:my-2 text-lg">Info</strong>
 
-						<div
-							class="bade bade-warning flex flex-col text-sm gap-2">
+						<div class="bade bade-warning flex flex-col text-xs">
 							<span>
 								The buckets assigned to the test user will be
 								deleted at:
 							</span>
 
-							<div class="badge badge-warning">
+							<div class="badge badge-warning my-1 sm:my-2">
 								{formatTimestamp(getNextCronExecution())}
 							</div>
 						</div>
