@@ -8,7 +8,7 @@ export const DELETE = async ({ locals }) => {
 		return new Response('Test user can not be deleted', { status: 401 })
 	}
 
-	await supabase.rpc('delete_user')
+	// await supabase.rpc('delete_user')
 	await supabase.auth.signOut()
 
 	return new Response('User deleted', { status: 200 })

@@ -2,11 +2,12 @@
 	import Footer from '$lib/Footer.svelte'
 	import HomeListItem from '$lib/HomeListItem.svelte'
 	import { invalidateAll } from '$app/navigation'
-	import { onMount } from 'svelte'
+	import { afterUpdate, onMount } from 'svelte'
 	import { homeSearchTerm } from '$lib/stores/store'
 	import { toast } from 'svelte-sonner'
 
 	export let data
+	let firstMount = true
 
 	$: ({ buckets } = data)
 
@@ -15,7 +16,12 @@
 	)
 
 	onMount(async () => {
+		console.log('mounted')
 		await invalidateAll()
+	})
+	afterUpdate(() => {
+		console.log('after updated')
+		firstMount = false
 	})
 
 	async function handleCreateBucket() {
@@ -40,9 +46,9 @@
 
 <main
 	class="flex flex-col justify-between sm:h-[calc(100vh_-_57px)] h-[calc(100vh_-_105px)]">
-	<section class="flex flex-col overflow-y-auto">
+	<section class="flex flex-col-reverse overflow-y-auto">
 		{#each filteredBuckets as bucket}
-			<HomeListItem {bucket} />
+			<HomeListItem {bucket} {firstMount} />
 		{/each}
 	</section>
 	{#if buckets.length <= 0}

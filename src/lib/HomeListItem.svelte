@@ -1,8 +1,17 @@
 <script lang="ts">
 	import { goto } from '$app/navigation'
 	import { selectedBuckets } from '$lib/stores/store'
+	import { onMount } from 'svelte'
+	import { fly } from 'svelte/transition'
 
 	export let bucket: Bucket
+	export let firstMount: boolean
+	let container: HTMLElement
+
+	onMount(() => {
+		if (firstMount) return
+		container.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+	})
 
 	function selectBucket(id: string) {
 		const isAlreadySelected = $selectedBuckets.includes(id)
@@ -28,6 +37,8 @@
 </script>
 
 <button
+	bind:this={container}
+	in:fly={{ x: -100, duration: 700 }}
 	on:click={() => goto(`/protected-routes/bucket/${bucket.id}`)}
 	class="transition-all duration-200 flex group gap-4 border-b hover:bg-secondaryLightHover dark:hover:bg-secondaryDarkHover items-center justify-between hover:text-black/90 hover:dark:text-white/90">
 	<div class="flex items-center">
