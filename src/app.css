@@ -89,6 +89,8 @@ body {
 }
 
 .badge {
+	@apply !w-fit;
+	@apply flex items-center gap-2;
 	@apply opacity-50;
 	@apply text-xs border px-2 sm:px-2.5  rounded-full font-mono;
 	@apply !bg-secondaryLight dark:!bg-secondaryDark;
