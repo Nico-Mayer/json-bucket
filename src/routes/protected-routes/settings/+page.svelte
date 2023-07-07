@@ -13,6 +13,7 @@
 
 	$: ({ session, supabase } = data)
 
+	$: isTestUser = email === PUBLIC_DEMO_EMAIL
 	$: canDelete = deleteInputValue === 'DELETE' && email !== PUBLIC_DEMO_EMAIL
 	$: user = session?.user
 	$: user_metadata = session?.user?.user_metadata
@@ -120,28 +121,34 @@
 				<strong class="mb-1 sm:mb-2 text-lg">Account</strong>
 				<h3 class="my-2 font-bold text-red-500">Delete Account</h3>
 
-				<p class="text-sm my-1 sm:my-2 text-red-500">
-					All data connected to your account will be permanently lost
-					upon its deletion.
-				</p>
-				<span class="font-mono my-2 text-sm text-red-500"
-					>Type in "DELETE"</span>
+				{#if isTestUser}
+					<p class="text-sm my-1 sm:my-2 text-red-500">
+						Test users cannot be deleted.
+					</p>
+				{:else}
+					<p class="text-sm my-1 sm:my-2 text-red-500">
+						All data connected to your account will be permanently
+						lost upon its deletion.
+					</p>
+					<span class="font-mono my-2 text-sm text-red-500"
+						>Type in "DELETE"</span>
 
-				<div class="flex flex-col gap-2">
-					<input
-						class="input h-8"
-						type="text"
-						maxlength="6"
-						bind:value={deleteInputValue} />
-					<button
-						disabled={!canDelete}
-						class:disabled-btn={!canDelete}
-						class="btn delete-btn h-8"
-						on:click={handleDeleteUser}>
-						<div class="i-carbon-trash-can" />
-						<span>Delete Account</span>
-					</button>
-				</div>
+					<div class="flex flex-col gap-2">
+						<input
+							class="input h-8"
+							type="text"
+							maxlength="6"
+							bind:value={deleteInputValue} />
+						<button
+							disabled={!canDelete}
+							class:disabled-btn={!canDelete}
+							class="btn delete-btn h-8"
+							on:click={handleDeleteUser}>
+							<div class="i-carbon-trash-can" />
+							<span>Delete Account</span>
+						</button>
+					</div>
+				{/if}
 			</div>
 		</section>
 	</main>
