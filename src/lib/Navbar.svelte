@@ -3,16 +3,28 @@
 	import { page } from '$app/stores'
 	import { homeSearchTerm, selectedBuckets } from '$lib/stores/store'
 	import type { Session } from '@supabase/supabase-js'
+	import { onMount } from 'svelte'
 	import { toast } from 'svelte-sonner'
 	import { fade } from 'svelte/transition'
 
 	export let session: Session | null
 
+	let _mounted = false
 	let name: string
 	let email: string
 	let avatar_url: string
+	let pathname: string = ''
+	let canDelete = false
 
-	$: pathname = $page?.url?.pathname
+	onMount(() => {
+		_mounted = true
+	})
+
+	$: {
+		if (_mounted) {
+			pathname = $page?.url?.pathname
+		}
+	}
 	$: onHome = pathname.startsWith('/protected-routes/home')
 	$: onBucket = pathname.startsWith('/protected-routes/bucket')
 	$: onSettings = pathname.startsWith('/protected-routes/settings')
@@ -30,11 +42,6 @@
 			user_metadata?.avatar_url ??
 			'https://api.iconify.design/carbon:user-avatar.svg?color=%23878787'
 	}
-
-	//$: console.log(session)
-	//$: console.log(user_metadata)
-
-	let canDelete = false
 
 	const handleCreateBucket = async () => {
 		toast.promise(createNewBucket(), {

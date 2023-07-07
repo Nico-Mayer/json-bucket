@@ -10,6 +10,7 @@ const config = {
 			'@codemirror/lint',
 			'@codemirror/lang-json',
 			'@codemirror/state',
+			'svelte-codemirror-editor',
 		],
 	},
 }
