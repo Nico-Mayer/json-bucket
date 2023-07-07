@@ -8,6 +8,7 @@
 
 	export let data
 	let firstMount = true
+	let homeListContainer: HTMLElement
 
 	$: ({ buckets } = data)
 
@@ -16,11 +17,10 @@
 	)
 
 	onMount(async () => {
-		console.log('mounted')
 		await invalidateAll()
+		homeListContainer.scrollTop = -homeListContainer.scrollHeight
 	})
 	afterUpdate(() => {
-		console.log('after updated')
 		firstMount = false
 	})
 
@@ -46,7 +46,9 @@
 
 <main
 	class="flex flex-col justify-between sm:h-[calc(100vh_-_57px)] h-[calc(100vh_-_105px)]">
-	<section class="flex flex-col-reverse overflow-y-auto">
+	<section
+		bind:this={homeListContainer}
+		class="flex flex-col-reverse overflow-y-auto">
 		{#each filteredBuckets as bucket}
 			<HomeListItem {bucket} {firstMount} />
 		{/each}

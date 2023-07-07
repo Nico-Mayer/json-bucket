@@ -10,7 +10,7 @@
 
 	onMount(() => {
 		if (firstMount) return
-		container.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+		container.scrollIntoView({ behavior: 'instant', block: 'nearest' })
 	})
 
 	function selectBucket(id: string) {
