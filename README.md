@@ -49,7 +49,8 @@ Easily log in with your social accounts such as GitHub, Google, or Discord. Once
 -   [ ] Implement automatic JSON formatting
 -   [ ] Implement private api key generation and endpoints
 -   [ ] Editor Keyboard Shortcuts
--   [ ] Implement soft delete buckets (trash)
+-   [ ] Implement soft delete buckets ( trash )
+-   [ ] AI for automatic JSON dummy data generation
 
 See the [open issues](https://github.com/Nico-Mayer/json-bucket/issues) for a full list of proposed features (and known issues).
 
