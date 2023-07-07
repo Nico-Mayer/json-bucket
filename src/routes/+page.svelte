@@ -95,6 +95,66 @@
 
 				<div class="p-5 flex flex-col gap-5 mt-5">
 					<button
+						class="btn demo-btn !text-xl w-full h-10 relative dark:!border-white/50 border-black/50"
+						on:click={() => signInWithDemo()}>
+						<svg
+							class="w-8 sm:w-12 -translate-x-20 absolute left-1/2"
+							version="1.1"
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 71.09447588176465 22.345717748312723"
+							width="71.09447588176465"
+							height="22.345717748312723">
+							<!-- svg-source:excalidraw -->
+
+							<defs>
+								<style class="style-fonts">
+									@font-face {
+										font-family: 'Virgil';
+										src: url('https://excalidraw.com/Virgil.woff2');
+									}
+									@font-face {
+										font-family: 'Cascadia';
+										src: url('https://excalidraw.com/Cascadia.woff2');
+									}
+								</style>
+							</defs>
+							<g stroke-linecap="round"
+								><g
+									transform="translate(10.52326733767984 11.037657325061673) rotate(0 25.023970603202486 0.1352015490947167)"
+									><path
+										d="M-0.52 -1.04 C7.49 -1.04, 40.19 -0.26, 48.25 -0.16 M1.4 1.03 C9.79 1.24, 42.45 1.36, 50.57 1.29"
+										class="stroke-black/90 dark:stroke-white/90"
+										stroke-width="1"
+										fill="none" /></g
+								><g
+									transform="translate(10.52326733767984 11.037657325061673) rotate(0 25.023970603202486 0.1352015490947167)"
+									><path
+										d="M25.83 8.45 C34.53 5.24, 41.26 6.1, 51.64 3.06 M28.31 10.46 C35.14 7.32, 42.65 3.46, 51.22 1.93"
+										class="stroke-black/90 dark:stroke-white/90"
+										stroke-width="1"
+										fill="none" /></g
+								><g
+									transform="translate(10.52326733767984 11.037657325061673) rotate(0 25.023970603202486 0.1352015490947167)"
+									><path
+										d="M25.81 -8.31 C34.5 -6.25, 41.23 -0.13, 51.64 3.06 M28.29 -6.3 C35.27 -4.15, 42.79 -2.74, 51.22 1.93"
+										class="stroke-black/90 dark:stroke-white/90"
+										stroke-width="1"
+										fill="none" /></g
+								></g
+							><mask /></svg>
+						<span>Demo</span>
+					</button>
+
+					<div
+						class="inline-flex items-center justify-center w-full relative">
+						<hr class=" w-full h-px my-6 bg-nord-4" />
+						<span
+							class="px-6 -translate-x-1/2 absolute left-1/2 !bg-white dark:!bg-black">
+							OR
+						</span>
+					</div>
+
+					<button
 						class="btn text-xl w-full h-10 github-btn"
 						on:click={() => signInWithProvider('github')}>
 						<div class="i-simple-icons-github text-lg" />
@@ -115,12 +175,6 @@
 							alt="Google Icon"
 							class="w-[18px]" />
 						<span>Sign in with Google</span>
-					</button>
-
-					<button
-						class="btn demo-btn !text-xl w-full h-10 google-btn"
-						on:click={() => signInWithDemo()}>
-						<span>Demo</span>
 					</button>
 				</div>
 			</div>

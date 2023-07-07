@@ -39,7 +39,7 @@ Easily log in with your social accounts such as GitHub, Google, or Discord. Once
 
 ## Features
 
--   [x] 🔐 Personal Account with unlimited buckets
+-   [x] 🔐 Personal Account with up to 100 buckets
 -   [x] 📄 Online JSON Editor
 -   [x] ☁️ Instant API Endpoint without any configuration
 -   [x] 🛟 Codemirror JSON Linting
