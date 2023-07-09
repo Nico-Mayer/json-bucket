@@ -76,6 +76,17 @@
 		}
 	}
 
+	function handleKeyDown(event: KeyboardEvent) {
+		if ((event.ctrlKey || event.metaKey) && event.key === 's') {
+			event.preventDefault()
+			handleUpdateBucket()
+		}
+		if ((event.ctrlKey || event.metaKey) && event.key === 'b') {
+			event.preventDefault()
+			handleFormat()
+		}
+	}
+
 	async function handleDeleteBucket() {
 		if (!currentBucket) return
 		if (!canDelete) {
@@ -136,7 +147,7 @@
 		return res
 	}
 
-	const copyApiURL = () => {
+	async function copyApiURL() {
 		if (!currentBucket) return
 		showCopySuccessIcon = true
 		navigator.clipboard.writeText(
@@ -148,6 +159,8 @@
 		toast.success('Copied to clipboard!')
 	}
 </script>
+
+<svelte:window on:keydown={handleKeyDown} />
 
 {#if currentBucket}
 	<main class="p-2 sm:px-4 flex justify-between border-b">
@@ -195,7 +208,7 @@
 			<button
 				disabled={!canUpdate}
 				class:disabled={!canUpdate}
-				title="Format JSON"
+				title="Format JSON | ctrl + b"
 				class="btn h-[30px]"
 				on:click={handleFormat}>
 				<div class="i-carbon-data-1 text-base" />
@@ -205,7 +218,7 @@
 			<button
 				disabled={!canUpdate}
 				class:disabled={!canUpdate}
-				title="Save changes"
+				title="Save changes | ctrl + s"
 				class="btn h-[30px]"
 				on:click={handleUpdateBucket}>
 				<div class="i-carbon-save text-base" />
