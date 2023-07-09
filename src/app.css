@@ -27,7 +27,7 @@ body {
 	@apply dark:bg-secondaryDark bg-secondaryLight;
 	@apply flex items-center justify-center gap-2;
 	@apply text-sm;
-	@apply py-1 px-4 border rounded;
+	@apply py-1 px-2 sm:px-4 border rounded;
 	@apply text-black/60 dark:text-white/60;
 }
 

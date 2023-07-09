@@ -49,7 +49,6 @@ Easily log in with your social accounts such as GitHub, Google, or Discord. Once
 -   [ ] Share buckets with other users for collaboration
 -   [ ] Implement soft delete buckets ( trash )
 -   [ ] Editor Keyboard Shortcuts
--   [ ] Implement automatic JSON formatting
 -   [ ] Implement private api key generation and endpoints
 -   [ ] AI for automatic JSON dummy data generation
 

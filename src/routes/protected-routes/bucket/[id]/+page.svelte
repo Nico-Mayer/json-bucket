@@ -61,6 +61,21 @@
 		canUpdate = validJSON && validName
 	}
 
+	function handleFormat() {
+		if (!currentBucket) return
+		try {
+			const formattedJSON = JSON.stringify(
+				JSON.parse(currentBucket.json_data),
+				null,
+				2
+			)
+			currentBucket.json_data = formattedJSON
+			toast.success('JSON formatted!')
+		} catch (e) {
+			toast.error('Could not format JSON.')
+		}
+	}
+
 	async function handleDeleteBucket() {
 		if (!currentBucket) return
 		if (!canDelete) {
@@ -148,7 +163,7 @@
 				bind:value={currentBucket.name} />
 		</section>
 
-		<section class="flex gap-3 items-center">
+		<section class="flex gap-1 sm:gap-3 items-center">
 			{#if unsavedChanges}
 				<div
 					transition:fade
@@ -167,7 +182,7 @@
 
 			<button
 				title="Copy API URL"
-				on:click={() => copyApiURL()}
+				on:click={copyApiURL}
 				class="btn h-[30px]">
 				{#if showCopySuccessIcon}
 					<div in:fade class="i-carbon-checkmark text-base" />
@@ -182,16 +197,26 @@
 				class:disabled={!canUpdate}
 				title="Save changes"
 				class="btn h-[30px]"
-				on:click={() => handleUpdateBucket()}>
+				on:click={handleUpdateBucket}>
 				<div class="i-carbon-save text-base" />
 				<span class="hidden sm:block">Save</span>
+			</button>
+
+			<button
+				disabled={!canUpdate}
+				class:disabled={!canUpdate}
+				title="Format JSON"
+				class="btn h-[30px]"
+				on:click={handleFormat}>
+				<div class="i-carbon-data-1 text-base" />
+				<span class="hidden sm:block">Format</span>
 			</button>
 
 			<button
 				title="Delete bucket"
 				class="btn h-[30px]"
 				class:delete-btn={canDelete}
-				on:click={() => handleDeleteBucket()}>
+				on:click={handleDeleteBucket}>
 				<div class="i-carbon-trash-can text-base" />
 
 				{#if canDelete}
