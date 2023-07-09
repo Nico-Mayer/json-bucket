@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { goto, invalidateAll } from '$app/navigation'
+	import { invalidateAll } from '$app/navigation'
 	import { page } from '$app/stores'
 	import { homeSearchTerm, selectedBuckets } from '$lib/stores/store'
 	import type { Session } from '@supabase/supabase-js'
@@ -108,13 +108,6 @@
 		$selectedBuckets = []
 		invalidateAll()
 	}
-
-	const handleGoBack = () => {
-		goto('/protected-routes/home')
-	}
-	const handleGoToSettings = () => {
-		goto('/protected-routes/settings')
-	}
 </script>
 
 <nav
@@ -150,12 +143,12 @@
 				</button>
 			{/if}
 		{:else if onBucket || onSettings}
-			<button
-				on:click={() => handleGoBack()}
+			<a
+				href="/protected-routes/home"
 				class="btn h-8 w-8 !p-0"
 				title="Home">
 				<div class="i-carbon-home text-lg" />
-			</button>
+			</a>
 		{/if}
 	</section>
 
@@ -169,8 +162,8 @@
 	</section>
 
 	<section class="w-1/3 flex justify-end">
-		<button
-			on:click={() => handleGoToSettings()}
+		<a
+			href="/protected-routes/settings"
 			class="group flex shrink-0 items-center relative">
 			<span class="sr-only">Menu</span>
 			<img
@@ -184,7 +177,7 @@
 
 				<span class="opacity-60">{email ?? 'Tester@test.com'}</span>
 			</p>
-		</button>
+		</a>
 	</section>
 </nav>
 

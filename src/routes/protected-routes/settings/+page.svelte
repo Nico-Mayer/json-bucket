@@ -74,10 +74,34 @@
 </script>
 
 {#if user_metadata}
-	<main class="w-full flex justify-center flex-col p-4 gap-4">
+	<div class="w-full flex justify-center flex-col p-4 gap-4">
+		<section
+			class="flex p-4 sm:px-8 rounded border justify-between items-center">
+			<div class="flex items-center">
+				<img
+					src={avatar_url}
+					alt="avatar"
+					class="h-14 sm:h-16 rounded-full" />
+				<div class="flex flex-col mx-4">
+					<strong class="my-1 text-lg">{name}</strong>
+
+					<p class="text-left text-xs block">
+						<strong class="block font-medium opacity-70">
+							{email}
+						</strong>
+					</p>
+				</div>
+			</div>
+
+			<button title="Logout" class="btn h-8" on:click={handleLogout}>
+				<div class="i-carbon-logout" />
+				<span class="hidden sm:block">Logout</span>
+			</button>
+		</section>
+
 		{#if isTestUser}
 			<section
-				class="flex px-2 sm:px-4 py-2 rounded border justify-between items-center">
+				class="flex p-4 sm:px-8 rounded border justify-between items-center">
 				<div class="flex items-center">
 					<div class="flex flex-col mx-4">
 						<strong class="my-1 sm:my-2 text-lg">Info</strong>
@@ -97,33 +121,7 @@
 			</section>
 		{/if}
 
-		<section
-			class="flex p-4 sm:p-8 rounded border justify-between items-center">
-			<div class="flex items-center">
-				<img
-					src={avatar_url}
-					alt="avatar"
-					class="h-16 sm:h-20 rounded-full" />
-				<div class="flex flex-col mx-4">
-					<strong class="my-1 sm:my-2 text-lg">Profile</strong>
-
-					<p class="text-left text-xs block">
-						<strong class="block font-medium">
-							{name}
-						</strong>
-
-						<span class="opacity-60">{email}</span>
-					</p>
-				</div>
-			</div>
-
-			<button title="Logout" class="btn h-8" on:click={handleLogout}>
-				<div class="i-carbon-logout" />
-				<span class="hidden sm:block">Logout</span>
-			</button>
-		</section>
-
-		<section class="flex p-4 sm:p-8 rounded border">
+		<section class="flex p-4 sm:px-8 rounded border">
 			<div class="flex flex-col">
 				<strong class="my-1 sm:my-2 text-lg">Appearance</strong>
 
@@ -146,21 +144,21 @@
 			</div>
 		</section>
 
-		<section class="flex p-4 sm:p-8 rounded border">
+		<section class="flex p-4 sm:px-8 rounded border">
 			<div class="flex flex-col w-96">
-				<strong class="mb-1 sm:mb-2 text-lg">Account</strong>
-				<h3 class="my-2 font-bold text-red-500">Delete Account</h3>
+				<strong class="my-2 text-lg">Account</strong>
+				<h3 class="my-1 font-semibold text-red-500">Delete Account</h3>
 
 				{#if isTestUser}
-					<span class="text-sm my-1 sm:my-2 text-red-500"
+					<span class="text-sm my-1 text-red-500"
 						>Test user cannot be deleted.</span>
 				{:else}
-					<p class="text-sm my-1 sm:my-2 text-red-500">
+					<p class="text-sm my-1 text-red-500">
 						All data connected to your account will be permanently
 						lost upon its deletion.
 					</p>
 				{/if}
-				<span class="font-mono my-2 text-sm text-red-500">
+				<span class="my-1 text-sm text-red-500">
 					Type in "DELETE"
 				</span>
 
@@ -185,5 +183,5 @@
 				</form>
 			</div>
 		</section>
-	</main>
+	</div>
 {/if}
