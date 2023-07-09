@@ -195,21 +195,21 @@
 			<button
 				disabled={!canUpdate}
 				class:disabled={!canUpdate}
-				title="Save changes"
-				class="btn h-[30px]"
-				on:click={handleUpdateBucket}>
-				<div class="i-carbon-save text-base" />
-				<span class="hidden sm:block">Save</span>
-			</button>
-
-			<button
-				disabled={!canUpdate}
-				class:disabled={!canUpdate}
 				title="Format JSON"
 				class="btn h-[30px]"
 				on:click={handleFormat}>
 				<div class="i-carbon-data-1 text-base" />
 				<span class="hidden sm:block">Format</span>
+			</button>
+
+			<button
+				disabled={!canUpdate}
+				class:disabled={!canUpdate}
+				title="Save changes"
+				class="btn h-[30px]"
+				on:click={handleUpdateBucket}>
+				<div class="i-carbon-save text-base" />
+				<span class="hidden sm:block">Save</span>
 			</button>
 
 			<button
