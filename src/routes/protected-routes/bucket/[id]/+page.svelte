@@ -176,7 +176,7 @@
 				bind:value={currentBucket.name} />
 		</section>
 
-		<section class="flex gap-1 sm:gap-3 items-center">
+		<section class="flex gap-2 sm:gap-3 items-center">
 			{#if unsavedChanges}
 				<div
 					transition:fade
