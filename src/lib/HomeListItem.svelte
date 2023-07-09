@@ -3,6 +3,7 @@
 	import { onMount } from 'svelte'
 	import { fly } from 'svelte/transition'
 	import { formatTimestamp } from '$lib/utils/utils'
+	import { goto } from '$app/navigation'
 
 	export let bucket: Bucket
 	export let firstMount: boolean
@@ -24,10 +25,10 @@
 	}
 </script>
 
-<a
+<button
 	bind:this={container}
 	in:fly={{ x: -100, duration: 700 }}
-	href={`/protected-routes/bucket/${bucket.id}`}
+	on:click={() => goto(`/protected-routes/bucket/${bucket.id}`)}
 	class="transition-all duration-200 flex group gap-4 border-b hover:bg-secondaryLightHover dark:hover:bg-secondaryDarkHover items-center justify-between hover:text-black/90 hover:dark:text-white/90">
 	<div class="flex items-center">
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -58,4 +59,4 @@
 			<div class="i-carbon-arrow-right self-center" />
 		</div>
 	</div>
-</a>
+</button>
