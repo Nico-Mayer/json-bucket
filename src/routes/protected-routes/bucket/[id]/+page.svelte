@@ -1,13 +1,14 @@
 <script lang="ts">
-	import { PUBLIC_API_URL } from '$env/static/public'
 	import { goto } from '$app/navigation'
 	import { page } from '$app/stores'
-	import CodeMirror from 'svelte-codemirror-editor'
+	import { PUBLIC_API_URL } from '$env/static/public'
+	import { saveBucket, deleteBuckets } from '$lib/utils/supabase'
 	import { json, jsonParseLinter } from '@codemirror/lang-json'
-	import { linter, lintGutter } from '@codemirror/lint'
+	import { lintGutter, linter } from '@codemirror/lint'
 	import { onMount } from 'svelte'
-	import { fade } from 'svelte/transition'
+	import CodeMirror from 'svelte-codemirror-editor'
 	import { toast } from 'svelte-sonner'
+	import { fade } from 'svelte/transition'
 
 	export let data
 
@@ -30,6 +31,7 @@
 		_mounted = true
 	})
 
+	$: ({ buckets } = data)
 	$: {
 		clearTimeout(cooldownTimer)
 		cooldownTimer = setTimeout(() => {
@@ -43,7 +45,6 @@
 		const initialBucketString = JSON.stringify(initialBucket)
 		unsavedChanges = currentBucketString !== initialBucketString
 	}
-	$: ({ buckets } = data)
 	$: currentBucket = buckets.find((bucket) => bucket.id === bucketID)
 	$: if (_mounted && currentBucket) {
 		try {
@@ -99,13 +100,8 @@
 		}
 
 		if (canDelete) {
-			await fetch(`/protected-api/delete-bucket/`, {
-				method: 'DELETE',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify({ buckets: [bucketID] }),
-			})
+			deleteBuckets([bucketID])
+
 			canDelete = false
 
 			toast.error('Bucket deleted!')
@@ -116,35 +112,23 @@
 
 	async function handleUpdateBucket() {
 		if (!canUpdate) return
+		if (!currentBucket) return
 
 		if (!unsavedChanges) {
 			toast.success('Bucket is up to date!')
 			return
 		}
 
-		toast.promise(saveBucket(), {
+		toast.promise(saveBucket(currentBucket), {
 			loading: 'Saving...',
-			success: 'Changes saved!',
+			success: () => {
+				initialBucket = {
+					...buckets.find((bucket) => bucket.id === bucketID),
+				} as Bucket
+				return 'Changes saved!'
+			},
 			error: 'Could not save.',
 		})
-
-		initialBucket = {
-			...buckets.find((bucket) => bucket.id === bucketID),
-		} as Bucket
-	}
-
-	async function saveBucket() {
-		const res = await fetch(`/protected-api/update-bucket/`, {
-			method: 'PUT',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({
-				newBucket: currentBucket,
-			}),
-		})
-
-		return res
 	}
 
 	async function copyApiURL() {

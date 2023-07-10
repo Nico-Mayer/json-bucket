@@ -171,6 +171,7 @@
 						class="btn text-xl w-full h-10 google-btn"
 						on:click={() => signInWithProvider('google')}>
 						<img
+							loading="lazy"
 							src="https://api.iconify.design/logos:google-icon.svg?color=%23030303"
 							alt="Google Icon"
 							class="w-[18px]" />

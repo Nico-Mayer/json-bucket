@@ -1,9 +1,10 @@
 <script lang="ts">
+	import { invalidateAll } from '$app/navigation'
 	import Footer from '$lib/Footer.svelte'
 	import HomeListItem from '$lib/HomeListItem.svelte'
-	import { invalidateAll } from '$app/navigation'
-	import { afterUpdate, onMount } from 'svelte'
 	import { homeSearchTerm } from '$lib/stores/store'
+	import { createNewBucket } from '$lib/utils/supabase'
+	import { afterUpdate, onMount } from 'svelte'
 	import { toast } from 'svelte-sonner'
 
 	export let data
@@ -16,8 +17,8 @@
 		bucket.name.toLowerCase().includes($homeSearchTerm.toLowerCase())
 	)
 
-	onMount(async () => {
-		await invalidateAll()
+	onMount(() => {
+		invalidateAll()
 		homeListContainer.scrollTop = -homeListContainer.scrollHeight
 	})
 	afterUpdate(() => {
@@ -27,20 +28,13 @@
 	async function handleCreateBucket() {
 		toast.promise(createNewBucket(), {
 			loading: 'Creating new bucket...',
-			success: 'Bucket created!',
+			success: () => {
+				$homeSearchTerm = ''
+				invalidateAll()
+				return 'Bucket created!'
+			},
 			error: 'Could not create bucket.',
 		})
-	}
-
-	async function createNewBucket() {
-		await fetch('/protected-api/new-bucket', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-		})
-		$homeSearchTerm = ''
-		await invalidateAll()
 	}
 </script>
 

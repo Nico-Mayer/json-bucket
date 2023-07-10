@@ -2,6 +2,7 @@
 	import { invalidateAll } from '$app/navigation'
 	import { page } from '$app/stores'
 	import { homeSearchTerm, selectedBuckets } from '$lib/stores/store'
+	import { createNewBucket, deleteBuckets } from '$lib/utils/supabase'
 	import type { Session } from '@supabase/supabase-js'
 	import { onMount } from 'svelte'
 	import { toast } from 'svelte-sonner'
@@ -25,9 +26,9 @@
 			pathname = $page?.url?.pathname
 		}
 	}
-	$: onHome = pathname.startsWith('/protected-routes/home')
-	$: onBucket = pathname.startsWith('/protected-routes/bucket')
-	$: onSettings = pathname.startsWith('/protected-routes/settings')
+	$: onHome = pathname?.startsWith('/protected-routes/home')
+	$: onBucket = pathname?.startsWith('/protected-routes/bucket')
+	$: onSettings = pathname?.startsWith('/protected-routes/settings')
 	$: user = session?.user
 	$: user_metadata = session?.user?.user_metadata
 	$: {
@@ -46,29 +47,15 @@
 	const handleCreateBucket = async () => {
 		toast.promise(createNewBucket(), {
 			loading: 'Creating new bucket...',
-			success: 'Bucket created!',
+			success: () => {
+				$homeSearchTerm = ''
+				invalidateAll()
+				return 'Bucket created!'
+			},
 			error: (data) => {
 				return `${data}`
 			},
 		})
-	}
-
-	async function createNewBucket() {
-		const res = await fetch('/protected-api/new-bucket', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-		})
-
-		const body = await res.json()
-
-		if (res.ok === false) {
-			throw new Error(body.message)
-		}
-
-		$homeSearchTerm = ''
-		await invalidateAll()
 	}
 
 	async function handleDeleteBuckets() {
@@ -88,25 +75,17 @@
 				: 'Bucket'
 
 		if (canDelete) {
-			toast.promise(deleteBuckets(), {
+			toast.promise(deleteBuckets($selectedBuckets), {
 				loading: 'Deleting buckets...',
-				success: successString + ' deleted!',
+				success: () => {
+					canDelete = false
+					$selectedBuckets = []
+					invalidateAll()
+					return successString + ' deleted!'
+				},
 				error: 'Could not delete buckets.',
 			})
 		}
-	}
-
-	async function deleteBuckets() {
-		await fetch(`/protected-api/delete-bucket/`, {
-			method: 'DELETE',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({ buckets: $selectedBuckets }),
-		})
-		canDelete = false
-		$selectedBuckets = []
-		invalidateAll()
 	}
 </script>
 
@@ -115,7 +94,7 @@
 	<section class="w-1/3 flex gap-2">
 		{#if onHome}
 			<button
-				on:click={() => handleCreateBucket()}
+				on:click={handleCreateBucket}
 				class="btn h-8 w-8 !p-0 shrink-0"
 				title="New bucket">
 				<div class="i-carbon-add text-xl" />
@@ -130,7 +109,7 @@
 			{#if $selectedBuckets.length > 0}
 				<button
 					transition:fade
-					on:click={() => handleDeleteBuckets()}
+					on:click={handleDeleteBuckets}
 					title="Delete buckets"
 					class:delete-btn={canDelete}
 					class="btn h-[32px] !hidden sm:!flex">
@@ -167,6 +146,7 @@
 			class="group flex shrink-0 items-center relative">
 			<span class="sr-only">Menu</span>
 			<img
+				loading="lazy"
 				alt="avatar"
 				src={avatar_url ??
 					'https://api.iconify.design/material-symbols:account-circle.svg?color=%23878787'}
@@ -193,7 +173,7 @@
 			<button
 				transition:fade
 				title="Delete bucket"
-				on:click={() => handleDeleteBuckets()}
+				on:click={handleDeleteBuckets}
 				class:delete-btn={canDelete}
 				class="btn h-[32px]">
 				<div class="i-carbon-trash-can text-base" />

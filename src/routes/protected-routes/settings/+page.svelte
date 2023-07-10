@@ -1,10 +1,10 @@
 <script lang="ts">
+	import { invalidateAll } from '$app/navigation'
 	import { PUBLIC_DEMO_EMAIL } from '$env/static/public'
 	import { activeTheme } from '$lib/stores/store'
-	import { invalidateAll } from '$app/navigation'
-	import { toast } from 'svelte-sonner'
 	import { formatTimestamp } from '$lib/utils/utils'
 	import cronParser from 'cron-parser'
+	import { toast } from 'svelte-sonner'
 
 	export let data
 
@@ -79,6 +79,7 @@
 			class="flex p-4 sm:px-8 rounded border justify-between items-center">
 			<div class="flex items-center">
 				<img
+					loading="lazy"
 					src={avatar_url}
 					alt="avatar"
 					class="h-14 sm:h-16 rounded-full" />
