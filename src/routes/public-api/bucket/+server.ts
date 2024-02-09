@@ -16,5 +16,10 @@ export async function GET({ locals, url }) {
 
 	const JSON_String = JSON.stringify(data.json_data)
 	const JSON_OBJ = JSON.parse(JSON_String)
-	return new Response(JSON_OBJ, { status: 200 })
+	const headers = {
+		'Content-Type': 'application/json',
+		'Access-Control-Allow-Origin': '*',
+	}
+
+	return new Response(JSON.stringify(JSON_OBJ), { status: 200, headers })
 }
